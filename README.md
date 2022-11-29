@@ -10,7 +10,7 @@ Sterujemy głównym bohaterem, który przemieszcza się po różnych poziomach. 
 
 ## Wzorce które zamierzamy użyć:
 
-### Wzorce Kreacyjne:
+### **Wzorce Kreacyjne:**
 
 #### 1. Singleton - instancja głównej klasy aplikacji
 
@@ -18,7 +18,7 @@ Sterujemy głównym bohaterem, który przemieszcza się po różnych poziomach. 
 
 #### 3. Prototyp - Do tworzenia klonów podobnych obiektów na mapie
 
-### Wzorce Behawioralne:
+### **Wzorce Behawioralne:**
 
 #### 4. Stan - jako na przykład: statystyki postaci głównej typu hp/prędkość poruszania czy zebrane itemy
 
@@ -26,7 +26,7 @@ Sterujemy głównym bohaterem, który przemieszcza się po różnych poziomach. 
 
 #### 6. Pamiątka - do zapisania stanu gry na początku każdego poziomu
 
-### Wzorce Strukturalne:
+### **Wzorce Strukturalne:**
 
 #### 7. Fasada - do obsługi zestawu klas poprzez uproszczony interfejs 
 
