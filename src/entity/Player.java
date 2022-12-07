@@ -27,6 +27,8 @@ public class Player extends Entity{
 
         setDefaultValues();
         getPlayerImage();
+
+        solidArea = new Rectangle(8,16,32,32);
     }
 
     public void setDefaultValues() {
@@ -68,17 +70,37 @@ public class Player extends Entity{
 
                 if (keyH.upPressed) {
                     direction = "up";
-                    worldY -= speed;
                 } else if (keyH.downPressed) {
                     direction = "down";
-                    worldY += speed;
                 } else if (keyH.leftPressed) {
                     direction = "left";
-                    worldX -= speed;
                 } else if (keyH.rightPressed) {
                     direction = "right";
-                    worldX += speed;
                 }
+
+                collisionOn = false;
+                gp.colChecker.checkTile(this);
+            if(!collisionOn) {
+                switch (direction) {
+
+                    case "up":
+                        worldY -= speed;
+                        break;
+
+                    case "down":
+                        worldY += speed;
+                        break;
+
+                    case "left":
+                        worldX -= speed;
+                        break;
+
+                    case "right":
+                        worldX += speed;
+                        break;
+                }
+            }
+
 
                 spriteCounter++;
                 if (spriteCounter > 12) {
