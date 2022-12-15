@@ -4,6 +4,8 @@ import object.OBJ_Key;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DecimalFormat;
 
 public class UI {
@@ -11,7 +13,7 @@ public class UI {
     GamePanel gp;
 
     Graphics2D g2;
-    Font arial_40, arial_80B;
+    Font retroGaming;
 //    BufferedImage keyImage;
     public boolean messageOn = false;
     public String message = "";
@@ -25,8 +27,17 @@ public class UI {
     public UI(GamePanel gp) {
 
         this.gp = gp;
-        arial_40 = new Font("Arial", Font.PLAIN, 40);
-        arial_80B = new Font("Arial", Font.BOLD, 80);
+
+        InputStream is = getClass().getResourceAsStream("/font/Retro Gaming.ttf");
+
+        try {
+
+            this.retroGaming = Font.createFont(Font.TRUETYPE_FONT, is);
+        } catch (FontFormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 //        OBJ_Key key = new OBJ_Key(gp);
 //        keyImage = key.image;
@@ -42,7 +53,7 @@ public class UI {
 
         this.g2 = g2;
 
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,80F));
+        g2.setFont(retroGaming);
         g2.setColor(Color.WHITE);
         // TITLE STATE
         if(gp.gameState == gp.titleState)
@@ -127,7 +138,7 @@ public class UI {
             g2.setColor(new Color(0, 0, 60));
             g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
             // TITLE NAME
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 86F));
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 76F));
             String text1 = "Polibuda";
             String text2 = "Boy Adventure";
             int x1 = getXforCenteredText(text1);
