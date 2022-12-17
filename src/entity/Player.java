@@ -96,6 +96,9 @@ public class Player extends Entity{
                 // CHECK TILE COLLISION
                 int objIndex = gp.colChecker.checkObject(this, true);
 
+                //CHECK EVENT
+                gp.eHandler.checkEvent();
+
                 pickUpObject(objIndex);
 
                 if(!collisionOn) {
