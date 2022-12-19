@@ -49,6 +49,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     // ENTITY AND OBJECT
     public Player player = new Player(this, keyH);
+    public Entity[] monster = new Entity[20];
 
     //you can display only 10 objects at screen
     public Entity[] obj = new Entity[10];
@@ -77,6 +78,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void setupGame() {
 
         aSetter.setObject();
+        aSetter.setMonster();
         playMusic(5);
         gameState = titleState;
     }
@@ -127,6 +129,11 @@ public class GamePanel extends JPanel implements Runnable{
         if(gameState == playState) {
             player.update();
 
+            for (Entity entity : monster) {
+                if (entity != null)
+                    entity.update();
+            }
+
         } else if (gameState ==pauseState) {
             // nothing
         }
@@ -160,6 +167,10 @@ public class GamePanel extends JPanel implements Runnable{
                 if (object != null) {
                     entityList.add(object);
                 }
+            }
+            for (Entity entity : monster) {
+                if (entity != null)
+                    entityList.add(entity);
             }
             //SORT ENTITIES BY WORLDY
             entityList.sort(Comparator.comparingInt(e -> e.worldY));

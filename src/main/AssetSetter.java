@@ -1,5 +1,6 @@
 package main;
 
+import monster.GreenSlime;
 import object.OBJ_Boots;
 import object.OBJ_Chest;
 import object.OBJ_Door;
@@ -36,5 +37,15 @@ public class AssetSetter {
         gp.obj[4].worldX = 11 * gp.tileSize;
         gp.obj[4].worldY = 11 * gp.tileSize;
 
+    }
+
+    public void setMonster(){
+        gp.monster[0] = new GreenSlime(gp);
+        gp.monster[0].worldX = gp.tileSize*10;
+        gp.monster[0].worldY = gp.tileSize*10;
+
+        gp.monster[1] = new GreenSlime(gp);
+        gp.monster[1].worldX = gp.tileSize*12;
+        gp.monster[1].worldY = gp.tileSize*12;
     }
 }

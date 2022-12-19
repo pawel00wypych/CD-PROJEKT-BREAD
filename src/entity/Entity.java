@@ -15,7 +15,8 @@ public class Entity {
     public int speed;
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
     public String direction="down";
-
+    public boolean invincible = false;
+    public int invincibleCounter = 0;
     public int spriteCounter = 0;
 
     public int spriteNumber = 1;
@@ -25,7 +26,7 @@ public class Entity {
     public BufferedImage image, image2, image3;
     public String name;
     public boolean collision = false;
-
+    public int type; // 0 = player , 2 = monster
     // CHARACTER STATUS
     public int maxLife;
     public int life;
@@ -44,7 +45,16 @@ public class Entity {
         collisionOn = false;
         gp.colChecker.checkTile(this);
         gp.colChecker.checkObject(this,false);
-        gp.colChecker.checkPlayer(this);
+        gp.colChecker.checkEntity(this,gp.monster);
+        boolean contactPlayer = gp.colChecker.checkPlayer(this);
+
+        if(this.type == 2 && contactPlayer){
+            if(!gp.player.invincible){
+                gp.player.life -= 1;
+                gp.player.invincible = true;
+            }
+        }
+
         if(!collisionOn) {
             switch (direction) {
                 case "up": worldY -= speed; break;
@@ -107,9 +117,11 @@ public class Entity {
                         image = right2;
                     }
                     break;
-
             }
+
+
             g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+
         }
 
     }
