@@ -1,11 +1,15 @@
 package main;
 
+import com.sun.source.tree.EmptyStatementTree;
+import entity.Entity;
 import entity.Player;
-import object.SuperObject;
 import tile.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class GamePanel extends JPanel implements Runnable{
 
@@ -47,7 +51,10 @@ public class GamePanel extends JPanel implements Runnable{
     public Player player = new Player(this, keyH);
 
     //you can display only 10 objects at screen
-    public SuperObject obj[] = new SuperObject[10];
+    public Entity[] obj = new Entity[10];
+
+    ArrayList<Entity> entityList = new ArrayList<>();
+
 
     // GAME STATE
     public int gameState;
@@ -147,16 +154,21 @@ public class GamePanel extends JPanel implements Runnable{
             // TILE
             tileM.draw(g2);
 
-            // OBJECT
-            for(int i = 0; i < obj.length; i++) {
-                if(obj[i] != null) {
-                    obj[i].draw(g2, this);
+            //ADD ENTITIES AND OBJECTS TO LIST
+            entityList.add(player);
+            for (Entity object : obj) {
+                if (object != null) {
+                    entityList.add(object);
                 }
             }
+            //SORT ENTITIES BY WORLDY
+            entityList.sort(Comparator.comparingInt(e -> e.worldY));
 
-
-            //PLAYER
-            player.draw(g2);
+            //DRAW ENTITIES AND CLEAR THE LIST
+            for (Entity entity : entityList) {
+                entity.draw(g2);
+            }
+            entityList.clear();
 
             // UI
             ui.draw(g2);
