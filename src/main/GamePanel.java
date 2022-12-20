@@ -129,10 +129,16 @@ public class GamePanel extends JPanel implements Runnable{
         if(gameState == playState) {
             player.update();
 
-            for (Entity entity : monster) {
-                if (entity != null)
-                    entity.update();
+            for(int i = 0; i< monster.length;i++){
+                if (monster[i] != null){
+                    if(monster[i].alive)
+                        monster[i].update();
+                    else
+                        monster[i] = null;
+                }
+
             }
+
 
         } else if (gameState ==pauseState) {
             // nothing
@@ -169,8 +175,10 @@ public class GamePanel extends JPanel implements Runnable{
                 }
             }
             for (Entity entity : monster) {
-                if (entity != null)
+                if (entity != null){
                     entityList.add(entity);
+                }
+
             }
             //SORT ENTITIES BY WORLDY
             entityList.sort(Comparator.comparingInt(e -> e.worldY));
@@ -193,14 +201,9 @@ public class GamePanel extends JPanel implements Runnable{
                 g2.drawString("Draw Time: " + passed, 10, 400);
                 System.out.println("Draw Time: " + passed);
             }
-
-
             g2.dispose();
 
         }
-
-
-
     }
 
     public void playMusic(int i) {

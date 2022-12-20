@@ -96,6 +96,7 @@ public class Player extends Entity{
                 } else if (keyH.rightPressed) {
                     direction = "right";
                 }else if (keyH.enterPressed) {
+                    gp.playSE(9);
                     attacking = true;
                 }
 
@@ -119,19 +120,15 @@ public class Player extends Entity{
                 // IF FALSE PLAYER CAN MOVE
                 if(!collisionOn && !keyH.enterPressed) {
                     switch (direction) {
-
                         case "up":
                             worldY -= speed;
                             break;
-
                         case "down":
                             worldY += speed;
                             break;
-
                         case "left":
                             worldX -= speed;
                             break;
-
                         case "right":
                             worldX += speed;
                             break;
@@ -139,7 +136,6 @@ public class Player extends Entity{
                 }
 
                 gp.keyH.enterPressed = false;
-
                 spriteCounter++;
                 if (spriteCounter > 12) {
                     if (spriteNumber == 1) {
@@ -314,6 +310,7 @@ public class Player extends Entity{
     public void contactMonster(int i){
         if(i != 999){
             if(!invincible){
+                gp.playSE(8);
                 life -=1;
                 invincible = true;
             }
@@ -324,12 +321,13 @@ public class Player extends Entity{
         if(monsterIndex != 999) {
 
             if(!gp.monster[monsterIndex].invincible) {
-
+                gp.playSE(7);
                 gp.monster[monsterIndex].life -= 1;
                 gp.monster[monsterIndex].invincible = true;
+                gp.monster[monsterIndex].damageReaction();
 
                 if(gp.monster[monsterIndex].life <= 0) {
-                    gp.monster[monsterIndex] = null;
+                    gp.monster[monsterIndex].dying = true;
                 }
             }
         }

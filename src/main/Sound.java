@@ -19,6 +19,12 @@ public class Sound {
         soundURL[4] = getClass().getResource("/sound/fanfare.wav");
         soundURL[5] = getClass().getResource("/sound/IntroTheme.wav");
         soundURL[6] = getClass().getResource("/sound/Song1.wav");
+        soundURL[7] = getClass().getResource("/sound/hitmonster.wav");
+        soundURL[8] = getClass().getResource("/sound/receivedamage.wav");
+        //THAT SOUND DONT WORK IDK WHY IT IS BROKEN ADDED TEMPORTARY ANOTHER
+        //soundURL[9] = getClass().getResource("/sound/swingsound.wav");
+        soundURL[9] = getClass().getResource("/sound/parry.wav");
+        System.out.println(soundURL[9] );
 
     }
 
