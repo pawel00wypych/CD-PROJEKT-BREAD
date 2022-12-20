@@ -21,7 +21,7 @@ public class TileManager {
 
         this.gp = gp;
 
-        tile = new Tile[10];
+        tile = new Tile[31];
 
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
@@ -32,12 +32,39 @@ public class TileManager {
 
     public void getTileImage() {
 
-            setup(0, "grass", false);
-            setup(1, "wall", true);
-            setup(2, "water", true);
-            setup(3, "earth", false);
-            setup(4, "tree", true);
-            setup(5, "sand", false);
+        setup(0, "grass0", false);
+        setup(1, "grass0", false);
+        setup(2, "grass0", false);
+        setup(3, "grass0", false);
+        setup(4, "grass0", false);
+        setup(5, "grass0", false);
+        setup(6, "grass0", false);
+        setup(7, "grass0", false);
+        setup(8, "grass0", false);
+        setup(9, "grass0", false);
+        setup(10, "grass0", false);
+        setup(11, "grass1", false);
+        setup(12, "grass2", false);
+        setup(13, "earth0", false);
+        setup(14, "wall0", true);
+        setup(15, "tree0", true);
+        setup(16, "tree1", true);
+        setup(17, "water00", true);
+        setup(18, "water01", true);
+        setup(19, "water02", true);
+        setup(20, "water03", true);
+        setup(21, "water04", true);
+        setup(22, "water05", true);
+        setup(23, "water06", true);
+        setup(24, "water07", true);
+        setup(25, "water08", true);
+        setup(26, "water09", true);
+        setup(27, "water10", true);
+        setup(28, "water11", true);
+        setup(29, "water12", true);
+        setup(30, "water13", true);
+
+
     }
 
     public void setup(int index, String imageName, boolean collision) {
