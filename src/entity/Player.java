@@ -3,6 +3,7 @@ package entity;
 import main.GamePanel;
 import main.KeyHandler;
 import main.UtilityTool;
+import object.OBJ_Fireball;
 import object.OBJ_Shield_Wood;
 import object.OBJ_Sword_Normal;
 
@@ -15,8 +16,6 @@ import java.io.IOException;
 public class Player extends Entity{
 
     KeyHandler keyH;
-
-
     public final int screenX;
     public final int screenY;
     public int hasKey = 0;
@@ -63,7 +62,7 @@ public class Player extends Entity{
         currentShield = new OBJ_Shield_Wood(gp);
         attack = getAttack();
         defence = getDefence();
-
+        projectile = new OBJ_Fireball(gp);
     }
 
     public int getAttack(){
@@ -169,7 +168,19 @@ public class Player extends Entity{
                     spriteCounter = 0;
                 }
         }
+        //only 1 projectile at the time
+        if(gp.keyH.shotKeyPressed && !projectile.alive && shotAvailableCounter == 30){
+            //SET DEFAULT COORDINATES DIRECTIONS AND USER
+            projectile.set(worldX, worldY, direction,true,this);
 
+            //ADDIT TO THE LIST
+            gp.projectileList.add(projectile);
+            gp.playSE(10);
+            shotAvailableCounter = 0;
+        }
+        if(shotAvailableCounter < 30){
+            shotAvailableCounter++;
+        }
         // THIS NEEDS TO BE OUTSIDE OF KEY IF STATEMENT!
             if(invincible){
                 invincibleCounter++;
@@ -213,7 +224,7 @@ public class Player extends Entity{
 
 
             int monsterIndex = gp.colChecker.checkEntity(this, gp.monster);
-            damageMonster(monsterIndex);
+            damageMonster(monsterIndex, attack);
 
             // AFTER CHECKING COLLISION, RESTORE ORIGINAL DATA
             worldX = currentWorldX;
@@ -333,7 +344,7 @@ public class Player extends Entity{
     }
     public void contactMonster(int i){
         if(i != 999){
-            if(!invincible){
+            if(!invincible && !gp.monster[i].dying){
                 gp.playSE(8);
                 int damage = gp.monster[i].attack - defence;
                 if(damage<0)
@@ -345,7 +356,7 @@ public class Player extends Entity{
         }
     }
 
-    public void damageMonster(int i) {
+    public void damageMonster(int i, int attack) {
         if(i != 999) {
 
             if(!gp.monster[i].invincible) {

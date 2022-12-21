@@ -38,6 +38,7 @@ public class Entity {
     public int invincibleCounter = 0;
     int dyingCounter = 0;
     int hpBarCounter = 0;
+    public int shotAvailableCounter = 0;
 
 
     // CHARACTER ATTRIBUTES
@@ -56,10 +57,15 @@ public class Entity {
     public int nextLevelExp;
     public Entity currentWeapon;
     public Entity currentShield;
+    public int maxMana;
+    public int mana;
+    public Projectile projectile;
+    public Entity user;
 
     //ITEM ATTRIBUTES
     public int attackValue;
     public int defenceValue;
+    public int useCost;
 
     public Entity(GamePanel gp) {
         this.gp = gp;
@@ -206,7 +212,6 @@ public class Entity {
             changeAlpha(g2,1f);
 
         if(dyingCounter > i*8){
-            dying = false;
             alive = false;
         }
 
