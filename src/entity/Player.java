@@ -111,13 +111,13 @@ public class Player extends Entity{
 
                 if (keyH.upPressed) {
                     direction = "up";
-                } else if (keyH.downPressed) {
+                }  if (keyH.downPressed) {
                     direction = "down";
-                } else if (keyH.leftPressed) {
+                }  if (keyH.leftPressed) {
                     direction = "left";
-                } else if (keyH.rightPressed) {
-                    direction = "right";
-                }else if (keyH.enterPressed) {
+                }if (keyH.rightPressed) {
+                direction = "right";
+                } if (keyH.enterPressed) {
                     gp.playSE(9);
                     attacking = true;
                 }
