@@ -40,6 +40,9 @@ public class KeyHandler implements KeyListener {
         else if(gp.gameState == gp.characterState){
             characterState(code);
         }
+        else if(gp.gameState == gp.levelUpState){
+            levelUpState(code);
+        }
 
     }
     public void titleState(int code){
@@ -141,6 +144,13 @@ public class KeyHandler implements KeyListener {
         }
     }
     public void  pauseState(int code){
+        if (code == KeyEvent.VK_SPACE) {
+            gp.gameState = gp.playState;
+        }
+
+    }
+
+    public void  levelUpState(int code){
         if (code == KeyEvent.VK_SPACE) {
             gp.gameState = gp.playState;
         }

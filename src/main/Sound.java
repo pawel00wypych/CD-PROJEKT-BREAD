@@ -24,6 +24,7 @@ public class Sound {
         //THAT SOUND DONT WORK IDK WHY IT IS BROKEN ADDED TEMPORTARY ANOTHER
         //soundURL[9] = getClass().getResource("/sound/swingsound.wav");
         soundURL[9] = getClass().getResource("/sound/parry.wav");
+        soundURL[10] = getClass().getResource("/sound/levelup.wav");
         System.out.println(soundURL[9] );
 
     }

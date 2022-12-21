@@ -15,6 +15,8 @@ import java.io.IOException;
 public class Player extends Entity{
 
     KeyHandler keyH;
+
+
     public final int screenX;
     public final int screenY;
     public int hasKey = 0;
@@ -55,19 +57,21 @@ public class Player extends Entity{
         strength = 1; //more strength -> more damage
         dexterity = 1; //more dexterity -> more defence
         exp = 0;
-        nextLevelExp = 5;
+        nextLevelExp = 4;
         coin = 0;
         currentWeapon = new OBJ_Sword_Normal(gp);
         currentShield = new OBJ_Shield_Wood(gp);
         attack = getAttack();
         defence = getDefence();
+
     }
 
     public int getAttack(){
-        return attack = strength * currentWeapon.attack;
+
+        return attack = strength * currentWeapon.attackValue;
     }
     public int getDefence(){
-        return defence = dexterity * currentShield.defence;
+        return defence = dexterity * currentShield.defenceValue;
     }
 
     public void getPlayerImage() {
@@ -207,6 +211,7 @@ public class Player extends Entity{
             solidArea.height = attackArea.height;
 
 
+
             int monsterIndex = gp.colChecker.checkEntity(this, gp.monster);
             damageMonster(monsterIndex);
 
@@ -330,25 +335,56 @@ public class Player extends Entity{
         if(i != 999){
             if(!invincible){
                 gp.playSE(8);
-                life -=1;
+                int damage = gp.monster[i].attack - defence;
+                if(damage<0)
+                    damage = 0;
+
+                life -= damage;
                 invincible = true;
             }
         }
     }
 
-    public void damageMonster(int monsterIndex) {
-        if(monsterIndex != 999) {
+    public void damageMonster(int i) {
+        if(i != 999) {
 
-            if(!gp.monster[monsterIndex].invincible) {
+            if(!gp.monster[i].invincible) {
                 gp.playSE(7);
-                gp.monster[monsterIndex].life -= 1;
-                gp.monster[monsterIndex].invincible = true;
-                gp.monster[monsterIndex].damageReaction();
 
-                if(gp.monster[monsterIndex].life <= 0) {
-                    gp.monster[monsterIndex].dying = true;
+                int damage = attack - gp.monster[i].defence;
+
+                if(damage < 0)
+                    damage = 0;
+
+                gp.monster[i].life -= damage;
+                gp.monster[i].invincible = true;
+                gp.monster[i].damageReaction();
+
+                if(gp.monster[i].life <= 0) {
+                    gp.monster[i].dying = true;
+                    exp += gp.monster[i].exp;
+                    checkLevelUp();
                 }
             }
+        }
+    }
+
+    public void checkLevelUp() {
+
+        if(exp >= nextLevelExp) {
+
+            level++;
+            nextLevelExp = nextLevelExp + 6;
+            maxLife += 2;
+            life = maxLife;
+            strength++;
+            dexterity++;
+            attack = getAttack();
+            defence = getDefence();
+
+
+            gp.playSE(10);
+            gp.gameState = gp.levelUpState;
         }
     }
 }

@@ -46,8 +46,8 @@ public class EventHandler {
                 damagePit(2,2);
             }
             //healing pool in tile 3/3
-            if(hit(3,3,"any")){
-                healingPool(3,3);
+            if(hit(8,8,"any")){
+                healingPool(8,8);
             }
         }
 
@@ -86,8 +86,9 @@ public class EventHandler {
 
     //one time heal event
     public void healingPool(int eventCol, int eventRow){
-        //gp.ui.showMessage("Your health has been recovered!");
+        gp.ui.showMessage("Your health has been recovered!");
         gp.player.life = gp.player.maxLife;
         eventRect[eventCol][eventRow].eventDone = true;
+        gp.aSetter.setMonster();
     }
 }

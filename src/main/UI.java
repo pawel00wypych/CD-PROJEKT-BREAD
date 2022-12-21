@@ -1,6 +1,7 @@
 package main;
 
 import entity.Entity;
+import entity.Player;
 import object.OBJ_Heart;
 
 import java.awt.*;
@@ -82,6 +83,9 @@ public class UI {
         // CHARACTER STATE
         if(gp.gameState == gp.characterState){
             drawCharacterScreen();
+        }
+        if(gp.gameState == gp.levelUpState){
+            drawLevelUpState();
         }
 
 //        if(gameFinished){
@@ -270,6 +274,7 @@ public class UI {
     }
 
     public void drawPauseScreen() {
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 40F));
         String text = "PAUSED";
         int x = getXforCenteredText(text);
         int y = gp.screenHeight/2;
@@ -392,5 +397,26 @@ public class UI {
         int x = tailX - textLength;
 
         return x;
+    }
+
+    public void drawLevelUpState() {
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 60F));
+        String text1 = "Your level is "+ gp.player.level + " now!";
+        String text2 = "You feel stronger!";
+        int x1 = getXforCenteredText(text1);
+        int x2 = getXforCenteredText(text2);
+        int y1 = gp.tileSize * 2;
+        int y2 = gp.tileSize * 4;
+
+        // SHADOW
+        g2.setColor(Color.BLACK);
+        g2.drawString(text1, x1 + 5, y1 + 5);
+        g2.drawString(text2, x2 + 5, y2 + 5);
+
+        // MAIN COLOR
+        g2.setColor(Color.YELLOW);
+        g2.drawString(text1, x1, y1);
+        g2.drawString(text2, x2, y2);
     }
 }
