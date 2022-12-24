@@ -23,7 +23,14 @@ public class Projectile extends Entity{
                 gp.player.damageMonster(monsterIndex,this.attack);
                 alive = false;
             }
-        }else{
+        }
+        if(user != gp.player) {
+            boolean contactPlayer = gp.colChecker.checkPlayer(this);
+
+            if(!gp.player.invincible && contactPlayer) {
+                damagePlayer(attack);
+                alive = false;
+            }
 
         }
 
@@ -49,4 +56,13 @@ public class Projectile extends Entity{
         }
 
     }
+
+    public boolean haveResource(Entity user) {
+
+        boolean haveResource = false;
+        return haveResource;
+    }
+
+    public void subtractResource(Entity user) {}
+
 }

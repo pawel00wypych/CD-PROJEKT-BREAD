@@ -86,8 +86,10 @@ public class EventHandler {
 
     //one time heal event
     public void healingPool(int eventCol, int eventRow){
-        gp.ui.showMessage("Your health has been recovered!");
+        gp.ui.showMessage("Your health and mana has been recovered!");
         gp.player.life = gp.player.maxLife;
+        gp.player.mana = gp.player.maxMana;
+
         eventRect[eventCol][eventRow].eventDone = true;
         gp.aSetter.setMonster();
     }

@@ -2,6 +2,7 @@ package monster;
 
 import entity.Entity;
 import main.GamePanel;
+import object.OBJ_Rock;
 
 import java.util.Random;
 
@@ -20,6 +21,7 @@ public class GreenSlime extends Entity {
         attack = 4;
         defence = 0;
         exp = 2;
+        projectile = new OBJ_Rock(gp);
 
         solidArea.x = 3;
         solidArea.y = 18;
@@ -57,6 +59,14 @@ public class GreenSlime extends Entity {
             if(i>75)
                 direction = "right";
             actionLockCounter = 0;
+        }
+
+        int i = new Random().nextInt(100)+1;
+        if(i > 99 && !projectile.alive && shotAvailableCounter == 30) {
+
+            projectile.set(worldX, worldY, direction, true, this);
+            gp.projectileList.add(projectile);
+            shotAvailableCounter = 0;
         }
     }
 

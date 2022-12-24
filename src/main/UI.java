@@ -3,6 +3,7 @@ package main;
 import entity.Entity;
 import entity.Player;
 import object.OBJ_Heart;
+import object.OBJ_ManaCrystal;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -18,7 +19,7 @@ public class UI {
     Font retroGaming;
 //    BufferedImage keyImage;
 
-    BufferedImage heart_full, heart_half, heart_blank;
+    BufferedImage heart_full, heart_half, heart_blank, crystal_full, crystal_blank;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -46,10 +47,14 @@ public class UI {
 //        OBJ_Key key = new OBJ_Key(gp);
 //        keyImage = key.image;
 
-        OBJ_Heart heart = new OBJ_Heart(gp);
+        Entity heart = new OBJ_Heart(gp);
         heart_full = heart.image;
         heart_half = heart.image2;
         heart_blank = heart.image3;
+
+        Entity crystal = new OBJ_ManaCrystal(gp);
+        crystal_full = crystal.image;
+        crystal_blank = crystal.image2;
 
     }
 
@@ -74,10 +79,12 @@ public class UI {
         if(gp.gameState == gp.playState) {
             
             drawPlayerLife();
+            drawPlayerMana();
         }
         // PAUSE STATE
         if (gp.gameState == gp.pauseState) {
             drawPlayerLife();
+            drawPlayerMana();
             drawPauseScreen();
         }
         // CHARACTER STATE
@@ -177,6 +184,32 @@ public class UI {
             x += gp.tileSize;
         }
 
+    }
+
+    public void drawPlayerMana() {
+
+        int x = gp.tileSize/2 - 5;
+        int y = gp.tileSize*2 - 20;
+        int i = 0;
+
+        // DRAW MAX MANA
+        while(i < gp.player.maxMana) {
+            g2.drawImage(crystal_blank, x, y, null);
+            i++;
+            x += 35;
+        }
+
+        x = gp.tileSize/2 - 5;
+        y = gp.tileSize*2 -20;
+        i = 0;
+
+        // DRAW CURRENT MANA
+        while(i < gp.player.mana) {
+
+            g2.drawImage(crystal_full, x, y, null);
+            i++;
+            x += 35;
+        }
     }
 
     public void drawTitleScreen() {
@@ -301,6 +334,8 @@ public class UI {
         textY+=lineHeight;
         g2.drawString("Life",textX,textY);
         textY+=lineHeight;
+        g2.drawString("Mana",textX,textY);
+        textY+=lineHeight;
         g2.drawString("Strength",textX,textY);
         textY+=lineHeight;
         g2.drawString("Dexterity",textX,textY);
@@ -331,6 +366,11 @@ public class UI {
         textY+=lineHeight;
 
         value = String.valueOf(gp.player.life + "/" + gp.player.maxLife);
+        textX = getXforAlignRightText(value,tailX);
+        g2.drawString(value,textX,textY);
+        textY+=lineHeight;
+
+        value = String.valueOf(gp.player.mana + "/" + gp.player.maxMana);
         textX = getXforAlignRightText(value,tailX);
         g2.drawString(value,textX,textY);
         textY+=lineHeight;
@@ -368,11 +408,11 @@ public class UI {
         value = String.valueOf(gp.player.coin);
         textX = getXforAlignRightText(value,tailX);
         g2.drawString(value,textX,textY);
-        textY+=lineHeight-10;
+        textY+=lineHeight-15;
 
-        g2.drawImage(gp.player.currentWeapon.down1,tailX-gp.tileSize,textY,null);
+        g2.drawImage(gp.player.currentWeapon.down1,tailX-gp.tileSize,textY - 5,null);
         textY+=gp.tileSize;
-        g2.drawImage(gp.player.currentShield.down1,tailX-gp.tileSize,textY,null);
+        g2.drawImage(gp.player.currentShield.down1,tailX-gp.tileSize,textY - 5,null);
     }
     public void drawSubWindow(int x, int y, int width, int height){
         Color c = new Color(0,0,0,210);

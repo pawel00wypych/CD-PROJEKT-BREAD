@@ -4,6 +4,7 @@ import main.GamePanel;
 import main.KeyHandler;
 import main.UtilityTool;
 import object.OBJ_Fireball;
+import object.OBJ_Rock;
 import object.OBJ_Shield_Wood;
 import object.OBJ_Sword_Normal;
 
@@ -52,6 +53,8 @@ public class Player extends Entity{
         // PLAYER STATUS
         maxLife = 6;
         life = maxLife;
+        maxMana = 4;
+        mana = maxMana;
         level = 1;
         strength = 1; //more strength -> more damage
         dexterity = 1; //more dexterity -> more defence
@@ -63,6 +66,7 @@ public class Player extends Entity{
         attack = getAttack();
         defence = getDefence();
         projectile = new OBJ_Fireball(gp);
+
     }
 
     public int getAttack(){
@@ -169,11 +173,15 @@ public class Player extends Entity{
                 }
         }
         //only 1 projectile at the time
-        if(gp.keyH.shotKeyPressed && !projectile.alive && shotAvailableCounter == 30){
+        if(gp.keyH.shotKeyPressed && !projectile.alive
+                && shotAvailableCounter == 30 && projectile.haveResource(this)){
             //SET DEFAULT COORDINATES DIRECTIONS AND USER
             projectile.set(worldX, worldY, direction,true,this);
 
-            //ADDIT TO THE LIST
+            // SUBTRACT THE COST (MANA, AMMO, ETC..)
+            projectile.subtractResource(this);
+
+            //ADD IT TO THE LIST
             gp.projectileList.add(projectile);
             gp.playSE(10);
             shotAvailableCounter = 0;
