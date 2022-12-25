@@ -1,10 +1,7 @@
 package main;
 
 import monster.GreenSlime;
-import object.OBJ_Boots;
-import object.OBJ_Chest;
-import object.OBJ_Door;
-import object.OBJ_Key;
+import object.*;
 
 public class AssetSetter {
 
@@ -16,26 +13,41 @@ public class AssetSetter {
 
     public void setObject() {
 
-        //gp.obj[0] = new OBJ_Key(gp);
-        //gp.obj[0].worldX = 20 * gp.tileSize;
-        //gp.obj[0].worldY = 20 * gp.tileSize;
+        int i = 0;
+        gp.obj[i] = new OBJ_Key(gp);
+        gp.obj[i].worldX = 25 * gp.tileSize;
+        gp.obj[i].worldY = 15 * gp.tileSize;
 
-        gp.obj[1] = new OBJ_Key(gp);
+        i++;
+        gp.obj[i] = new OBJ_Door(gp);
+        gp.obj[i].worldX = 25 * gp.tileSize;
+        gp.obj[i].worldY = 20 * gp.tileSize;
 
-        gp.obj[1].worldX = 25 * gp.tileSize;
-        gp.obj[1].worldY = 15 * gp.tileSize;
+        i++;
+        gp.obj[i] = new OBJ_Boots(gp);
+        gp.obj[i].worldX = 25 * gp.tileSize;
+        gp.obj[i].worldY = 25 * gp.tileSize;
 
-        gp.obj[2] = new OBJ_Door(gp);
-        gp.obj[2].worldX = 15 * gp.tileSize;
-        gp.obj[2].worldY = 15 * gp.tileSize;
+        i++;
+        gp.obj[i] = new OBJ_Heart(gp);
+        gp.obj[i].worldX = 30 * gp.tileSize;
+        gp.obj[i].worldY = 30 * gp.tileSize;
 
-        gp.obj[3] = new OBJ_Chest(gp);
-        gp.obj[3].worldX = 10 * gp.tileSize;
-        gp.obj[3].worldY = 10 * gp.tileSize;
+        i++;
+        gp.obj[i] = new OBJ_Coin_Bronze(gp);
+        gp.obj[i].worldX = 15 * gp.tileSize;
+        gp.obj[i].worldY = 25 * gp.tileSize;
 
-        gp.obj[4] = new OBJ_Boots(gp);
-        gp.obj[4].worldX = 11 * gp.tileSize;
-        gp.obj[4].worldY = 11 * gp.tileSize;
+        i++;
+        gp.obj[i] = new OBJ_Coin_Bronze(gp);
+        gp.obj[i].worldX = 30 * gp.tileSize;
+        gp.obj[i].worldY = 25 * gp.tileSize;
+
+        i++;
+        gp.obj[i] = new OBJ_ManaCrystal(gp);
+        gp.obj[i].worldX = 35 * gp.tileSize;
+        gp.obj[i].worldY = 25 * gp.tileSize;
+
 
     }
 

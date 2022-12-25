@@ -11,9 +11,17 @@ public class OBJ_ManaCrystal extends Entity {
         super(gp);
         this.gp = gp;
 
+        value = 2;
         name = "Mana Crystal";
+        down1 = setup("/objects/Object/manacrystal_full", gp.tileSize, gp.tileSize);
         image = setup("/objects/Object/manacrystal_full", gp.tileSize, gp.tileSize);
         image2 = setup("/objects/Object/manacrystal_blank", gp.tileSize, gp.tileSize);
 
+    }
+
+    public void use(Entity entity) {
+
+        entity.mana += value;
+        gp.playSE(2);
     }
 }

@@ -50,7 +50,7 @@ public class GamePanel extends JPanel implements Runnable{
     public Entity[] monster = new Entity[20];
 
     //you can display only 10 objects at screen
-    public Entity[] obj = new Entity[10];
+    public Entity[] obj = new Entity[50];
     public ArrayList<Entity> projectileList = new ArrayList<>();
 
     ArrayList<Entity> entityList = new ArrayList<>();
@@ -130,10 +130,13 @@ public class GamePanel extends JPanel implements Runnable{
 
             for(int i = 0; i< monster.length;i++){
                 if (monster[i] != null){
-                    if(monster[i].alive)
+                    if(monster[i].alive && !monster[i].dying) {
                         monster[i].update();
-                    else
+                    }
+                    if(!monster[i].alive) {
+                        monster[i].checkDrop();
                         monster[i] = null;
+                    }
                 }
 
             }

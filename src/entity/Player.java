@@ -33,9 +33,6 @@ public class Player extends Entity{
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
-        attackArea.width = 36;
-        attackArea.height = 36;
-
 
         setDefaultValues();
         getPlayerImage();
@@ -70,6 +67,8 @@ public class Player extends Entity{
     }
 
     public int getAttack(){
+
+        attackArea = currentWeapon.attackArea;
 
         return attack = strength * currentWeapon.attackValue;
     }
@@ -189,14 +188,20 @@ public class Player extends Entity{
         if(shotAvailableCounter < 30){
             shotAvailableCounter++;
         }
+
         // THIS NEEDS TO BE OUTSIDE OF KEY IF STATEMENT!
-            if(invincible){
-                invincibleCounter++;
-                if(invincibleCounter > 60){
-                    invincible = false;
-                    invincibleCounter = 0;
-                }
+        if(invincible){
+            invincibleCounter++;
+            if(invincibleCounter > 60){
+                invincible = false;
+                invincibleCounter = 0;
             }
+        }
+        if(life > maxLife)
+            life = maxLife;
+        if(mana > maxMana)
+            mana = maxMana;
+
     }
 
     public void attacking() {
@@ -252,40 +257,55 @@ public class Player extends Entity{
 
             String objectName = gp.obj[i].name;
 
-            switch (objectName) {
-                case "Key":
-                    gp.playSE(1);
-                    hasKey++;
-                    gp.obj[i] = null;
-                    gp.ui.showMessage("You got a key!");
-                    break;
-                case "Door":
-                    if(hasKey > 0) {
-
-                        gp.playSE(3);
+            // PICKUP ONLY ITEMS
+                switch (objectName) {
+                    case "Key":
+                        gp.playSE(1);
+                        hasKey++;
                         gp.obj[i] = null;
-                        hasKey--;
-                        gp.ui.showMessage("You opened the door!");
-                    }
-                    else {
-                        gp.ui.showMessage("You need a key!");
-                    }
-                    break;
-                case "Boots":
+                        gp.ui.showMessage("You got a key!");
+                        break;
+                    case "Door":
+                        if (hasKey > 0) {
 
-                    gp.playSE(2);
-                    speed += 2;
-                    gp.obj[i] = null;
-                    gp.ui.showMessage("Speed up!");
-                    break;
-                case "Chest":
+                            gp.playSE(3);
+                            gp.obj[i] = null;
+                            hasKey--;
+                            gp.ui.showMessage("You opened the door!");
+                        } else {
+                            gp.ui.showMessage("You need a key!");
+                        }
+                        break;
+                    case "Boots":
 
-                    gp.ui.gameFinished = true;
-                    gp.stopMusic();
-                    gp.playSE(4);
-                    break;
+                        gp.playSE(2);
+                        speed += 2;
+                        gp.obj[i] = null;
+                        gp.ui.showMessage("Speed up!");
+                        break;
+                    case "Bronze Coin":
+
+                        gp.obj[i].use(this);
+                        gp.obj[i] = null;
+                        break;
+                    case "Heart":
+
+                        if(life < maxLife) {
+                            gp.obj[i].use(this);
+                            gp.obj[i] = null;
+                        }
+                        break;
+                    case "Mana Crystal":
+
+                        if(mana < maxMana) {
+                            gp.obj[i].use(this);
+                            gp.obj[i] = null;
+                        }
+                        break;
+
+                }
             }
-        }
+
     }
 
     public void draw(Graphics2D g2) {
@@ -350,6 +370,7 @@ public class Player extends Entity{
         //RESET ALPHA AFTER DRAWING INVINCIBLE PLAYER
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,1f));
     }
+
     public void contactMonster(int i){
         if(i != 999){
             if(!invincible && !gp.monster[i].dying){

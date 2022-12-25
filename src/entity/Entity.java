@@ -44,6 +44,9 @@ public class Entity {
     // CHARACTER ATTRIBUTES
     public String name;
     public int type; // 0 = player , 2 = monster
+
+    public final int type_pickUpOnly = 3;
+    public final int type_consumable = 4;
     public int maxLife;
     public int life;
     public int speed;
@@ -64,9 +67,11 @@ public class Entity {
     public Entity user;
 
     //ITEM ATTRIBUTES
+    public int value;
     public int attackValue;
     public int defenceValue;
     public int useCost;
+
 
     public Entity(GamePanel gp) {
         this.gp = gp;
@@ -190,7 +195,7 @@ public class Entity {
             if(dying){
                 dyingAnimation(g2);
             }
-            g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(image, screenX, screenY, null);
 
             changeAlpha(g2,1f);
 
@@ -224,6 +229,22 @@ public class Entity {
         }
 
     }
+
+    public void checkDrop() {}
+
+    public void dropItem(Entity droppedItem) {
+
+        for(int i = 0; i < gp.obj.length; i++) {
+
+            if(gp.obj[i] == null) {
+
+                gp.obj[i] = droppedItem;
+                gp.obj[i].worldX = worldX; // the dead monster's worldX
+                gp.obj[i].worldY = worldY;
+                break;
+            }
+        }
+    }
     public void changeAlpha(Graphics2D g2,float alphaValue){
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,alphaValue));
     }
@@ -240,4 +261,6 @@ public class Entity {
 
         return image;
     }
+    public void use(Entity entity) {}
+
 }
