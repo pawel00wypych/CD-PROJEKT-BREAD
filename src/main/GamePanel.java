@@ -49,9 +49,10 @@ public class GamePanel extends JPanel implements Runnable{
     public Player player = new Player(this, keyH);
     public Entity[] monster = new Entity[20];
 
-    //you can display only 10 objects at screen
+    //you can display 50 objects at screen
     public Entity[] obj = new Entity[50];
     public ArrayList<Entity> projectileList = new ArrayList<>();
+    public ArrayList<Entity> particleList = new ArrayList<>();
 
     ArrayList<Entity> entityList = new ArrayList<>();
 
@@ -148,6 +149,14 @@ public class GamePanel extends JPanel implements Runnable{
                         projectileList.remove(i);
                 }
             }
+            for(int i = 0; i< particleList.size();i++){
+                if (particleList.get(i) != null){
+                    if(particleList.get(i).alive)
+                        particleList.get(i).update();
+                    else
+                        particleList.remove(i);
+                }
+            }
 
         } else if (gameState ==pauseState) {
             // nothing
@@ -195,6 +204,12 @@ public class GamePanel extends JPanel implements Runnable{
                     entityList.add(projectile);
                 }
             }
+            for (Entity particle : particleList) {
+                if (particle != null){
+                    entityList.add(particle);
+                }
+            }
+
 
             //SORT ENTITIES BY WORLDY
             entityList.sort(Comparator.comparingInt(e -> e.worldY));

@@ -21,7 +21,7 @@ public class TileManager {
 
         this.gp = gp;
 
-        tile = new Tile[44];
+        tile = new Tile[60];
 
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
@@ -58,11 +58,11 @@ public class TileManager {
         setup(23, "water06", true);
         setup(24, "water07", true);
         setup(25, "water08", true);
-        setup(26, "water09", true);
+        setup(26, "water13", true);
         setup(27, "water10", true);
         setup(28, "water11", true);
         setup(29, "water12", true);
-        setup(30, "water13", true);
+        setup(30, "water09", true);
         setup(31, "sand00", false);
         setup(32, "sand01", false);
         setup(33, "sand02", false);
@@ -76,6 +76,23 @@ public class TileManager {
         setup(41, "sand10", false);
         setup(42, "sand11", false);
         setup(43, "sand12", false);
+        setup(44, "spawn00", false);
+        setup(45, "spawn01", false);
+        setup(46, "spawn02", false);
+        setup(47, "spawn03", false);
+        setup(48, "spawn04", false);
+        setup(49, "spawn05", false);
+        setup(50, "spawn06", false);
+        setup(51, "spawn07", false);
+        setup(52, "spawn08", false);
+        setup(53, "spawn09", false);
+        setup(54, "spawn10", false);
+        setup(55, "spawn11", false);
+        setup(56, "spawn12", false);
+        setup(57, "spawn13", false);
+        setup(58, "spawn14", false);
+        setup(59, "spawn15", false);
+
 
     }
 
