@@ -100,7 +100,6 @@ public class KeyHandler implements KeyListener {
                     gp.playMusic(6);
                 }
                 if (gp.ui.commandNum == 1) {
-
                     System.out.println("RETURN");
                     gp.ui.titleScreenState = 0;
                 }
