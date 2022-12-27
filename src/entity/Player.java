@@ -65,6 +65,25 @@ public class Player extends Entity{
         projectile = new OBJ_Fireball(gp);
 
     }
+    public void setDefaultPositions(){
+        worldX = gp.tileSize * 24;
+        worldY = gp.tileSize * 24;
+        direction = "down";
+    }
+    public void restoreLifeAndMana(){
+        life = maxLife;
+        mana = maxMana;
+        invincible = false;
+        //THOSE SHOULD BE IN START LEVEL SETUP OR SMTH LIKE THIS
+        level = 1;
+        exp = 0;
+        nextLevelExp = 4;
+        coin = 0;
+        currentWeapon = new OBJ_Sword_Normal(gp);
+        currentShield = new OBJ_Shield_Wood(gp);
+        speed = 4;
+
+    }
 
     public int getAttack(){
 
@@ -201,6 +220,11 @@ public class Player extends Entity{
             life = maxLife;
         if(mana > maxMana)
             mana = maxMana;
+
+        if(life<= 0 ){
+            gp.gameState = gp.gameOverState;
+            gp.playSE(12);
+        }
 
     }
 

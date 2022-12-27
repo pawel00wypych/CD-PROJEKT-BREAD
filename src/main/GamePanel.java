@@ -75,7 +75,7 @@ public class GamePanel extends JPanel implements Runnable{
     public final int pauseState = 2;
     public final int characterState = 4;
     public final int optionsState = 6;
-
+    public final int gameOverState = 7;
     public int levelUpState = 5;
 
     public GamePanel() {
@@ -101,6 +101,21 @@ public class GamePanel extends JPanel implements Runnable{
             setFUllScreen();
 
     }
+
+    public void retry(){
+        player.setDefaultPositions();
+        player.restoreLifeAndMana();
+        aSetter.setObject();
+        aSetter.setMonster();
+    }
+    public void restart(){
+        player.setDefaultValues();
+        player.setDefaultPositions();
+        player.restoreLifeAndMana();
+        aSetter.setObject();
+        aSetter.setMonster();
+    }
+
     public void setFUllScreen(){
         //GET LOCAL SCREEN DEVICE
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();

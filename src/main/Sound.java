@@ -32,7 +32,7 @@ public class Sound {
         System.out.println(soundURL[9] );
         soundURL[10] = getClass().getResource("/sound/burning.wav");
         soundURL[11] = getClass().getResource("/sound/cursor.wav");
-
+        soundURL[12] = getClass().getResource("/sound/gameover.wav");
     }
 
     public void setFile(int i) {
