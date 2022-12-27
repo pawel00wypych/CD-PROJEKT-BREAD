@@ -21,7 +21,7 @@ public class TileManager {
 
         this.gp = gp;
 
-        tile = new Tile[60];
+        tile = new Tile[100];
 
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
@@ -92,8 +92,41 @@ public class TileManager {
         setup(57, "spawn13", false);
         setup(58, "spawn14", false);
         setup(59, "spawn15", false);
-
-
+        setup( 60, "portal00", false);
+        setup( 61, "portal01", false);
+        setup( 62, "portal02", false);
+        setup( 63, "portal03", false);
+        setup( 64, "portal04", false);
+        setup( 65, "portal05", false);
+        setup( 66, "portal06", false);
+        setup( 67, "portal07", false);
+        setup( 68, "portal08", false);
+        setup( 69, "portal09", false);
+        setup( 70, "portal10", false);
+        setup( 71, "portal11", false);
+        setup( 72, "portal12", false);
+        setup( 73, "portal13", false);
+        setup( 74, "portal14", false);
+        setup( 75, "portal15", false);
+        setup( 76, "rock00", true);
+        setup( 77, "rock01", true);
+        setup( 78, "thorns00", false);
+        setup( 79, "pool00", false);
+        setup( 80, "pool01", false);
+        setup( 81, "pool02", false);
+        setup( 82, "pool03", false);
+        setup( 83, "pool04", false);
+        setup( 84, "pool05", false);
+        setup( 85, "pool06", false);
+        setup( 86, "pool07", false);
+        setup( 87, "pool08", false);
+        setup( 88, "pool09", false);
+        setup( 89, "pool10", false);
+        setup( 90, "pool11", false);
+        setup( 91, "pool12", false);
+        setup( 92, "pool13", false);
+        setup( 93, "pool14", false);
+        setup( 94, "pool15", false);
     }
 
     public void setup(int index, String imageName, boolean collision) {

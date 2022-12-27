@@ -58,7 +58,7 @@ public class GamePanel extends JPanel implements Runnable{
     public Entity[] monster = new Entity[20];
 
     //you can display 50 objects at screen
-    public Entity[] obj = new Entity[50];
+    public Entity[] obj = new Entity[30];
     public ArrayList<Entity> projectileList = new ArrayList<>();
     public ArrayList<Entity> particleList = new ArrayList<>();
 
