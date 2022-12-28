@@ -223,6 +223,8 @@ public class Player extends Entity{
 
         if(life<= 0 ){
             gp.gameState = gp.gameOverState;
+            gp.ui.commandNum = -1;
+            gp.stopMusic();
             gp.playSE(12);
         }
 
@@ -279,21 +281,21 @@ public class Player extends Entity{
 
         if(i != 999) {
 
-            String objectName = gp.obj[i].name;
+            String objectName = gp.obj[gp.currentMap][i].name;
 
             // PICKUP ONLY ITEMS
                 switch (objectName) {
                     case "Key":
                         gp.playSE(1);
                         hasKey++;
-                        gp.obj[i] = null;
+                        gp.obj[gp.currentMap][i] = null;
                         gp.ui.showMessage("You got a key!");
                         break;
                     case "Door":
                         if (hasKey > 0) {
 
                             gp.playSE(3);
-                            gp.obj[i] = null;
+                            gp.obj[gp.currentMap][i] = null;
                             hasKey--;
                             gp.ui.showMessage("You opened the door!");
                         } else {
@@ -304,26 +306,26 @@ public class Player extends Entity{
 
                         gp.playSE(2);
                         speed += 2;
-                        gp.obj[i] = null;
+                        gp.obj[gp.currentMap][i] = null;
                         gp.ui.showMessage("Speed up!");
                         break;
                     case "Bronze Coin":
 
-                        gp.obj[i].use(this);
-                        gp.obj[i] = null;
+                        gp.obj[gp.currentMap][i].use(this);
+                        gp.obj[gp.currentMap][i] = null;
                         break;
                     case "Heart":
 
                         if(life < maxLife) {
-                            gp.obj[i].use(this);
-                            gp.obj[i] = null;
+                            gp.obj[gp.currentMap][i].use(this);
+                            gp.obj[gp.currentMap][i] = null;
                         }
                         break;
                     case "Mana Crystal":
 
                         if(mana < maxMana) {
-                            gp.obj[i].use(this);
-                            gp.obj[i] = null;
+                            gp.obj[gp.currentMap][i].use(this);
+                            gp.obj[gp.currentMap][i] = null;
                         }
                         break;
 
@@ -397,9 +399,9 @@ public class Player extends Entity{
 
     public void contactMonster(int i){
         if(i != 999){
-            if(!invincible && !gp.monster[i].dying){
+            if(!invincible && !gp.monster[gp.currentMap][i].dying){
                 gp.playSE(8);
-                int damage = gp.monster[i].attack - defence;
+                int damage = gp.monster[gp.currentMap][i].attack - defence;
                 if(damage<0)
                     damage = 0;
 
@@ -412,21 +414,21 @@ public class Player extends Entity{
     public void damageMonster(int i, int attack) {
         if(i != 999) {
 
-            if(!gp.monster[i].invincible) {
+            if(!gp.monster[gp.currentMap][i].invincible) {
                 gp.playSE(7);
 
-                int damage = attack - gp.monster[i].defence;
+                int damage = attack - gp.monster[gp.currentMap][i].defence;
 
                 if(damage < 0)
                     damage = 0;
 
-                gp.monster[i].life -= damage;
-                gp.monster[i].invincible = true;
-                gp.monster[i].damageReaction();
+                gp.monster[gp.currentMap][i].life -= damage;
+                gp.monster[gp.currentMap][i].invincible = true;
+                gp.monster[gp.currentMap][i].damageReaction();
 
-                if(gp.monster[i].life <= 0) {
-                    gp.monster[i].dying = true;
-                    exp += gp.monster[i].exp;
+                if(gp.monster[gp.currentMap][i].life <= 0) {
+                    gp.monster[gp.currentMap][i].dying = true;
+                    exp += gp.monster[gp.currentMap][i].exp;
                     checkLevelUp();
                 }
             }

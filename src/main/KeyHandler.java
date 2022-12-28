@@ -185,7 +185,10 @@ public class KeyHandler implements KeyListener {
         }
         // REFRESH MAP // to save edited map: CTRL + F9 in IntelliJ
         if (code == KeyEvent.VK_R) {
-            gp.tileM.loadMap("/maps/map01.txt");
+            switch (gp.currentMap){
+                case 0: gp.tileM.loadMap("/maps/map01.txt",0);
+                case 1: gp.tileM.loadMap("/maps/map_house.txt",1);
+            }
         }
     }
     public void  pauseState(int code){
