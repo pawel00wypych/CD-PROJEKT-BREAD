@@ -60,7 +60,7 @@ tmp/
 local.properties
 .loadpath
 .factorypath
-
+config.txt
 ##############################
 ## NetBeans
 ##############################

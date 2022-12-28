@@ -83,13 +83,13 @@ public class GreenSlime extends Entity {
         int i = new Random().nextInt(100) + 1;
 
         //SET THE MONSTER DROP
-        if(i < 50) {
+        if(i < 75) {
             dropItem(new OBJ_Coin_Bronze(gp));
         }
-        if(i >= 50 && i <75) {
+        if(i >= 75 && i <90) {
             dropItem(new OBJ_Heart(gp));
         }
-        if(i >= 75 && i < 100) {
+        if(i >= 90 && i < 100) {
             dropItem(new OBJ_ManaCrystal(gp));
         }
     }

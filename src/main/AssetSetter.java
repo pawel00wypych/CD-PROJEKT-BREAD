@@ -1,6 +1,7 @@
 package main;
 
 import monster.GreenSlime;
+import monster.RedSlime;
 import object.*;
 
 public class AssetSetter {
@@ -103,5 +104,20 @@ public class AssetSetter {
         gp.monster[i] = new GreenSlime(gp);
         gp.monster[i].worldX = gp.tileSize * 36;
         gp.monster[i].worldY = gp.tileSize * 11;
+
+        i++;
+        gp.monster[i] = new RedSlime(gp);
+        gp.monster[i].worldX = gp.tileSize * 30;
+        gp.monster[i].worldY = gp.tileSize * 7;
+
+        i++;
+        gp.monster[i] = new RedSlime(gp);
+        gp.monster[i].worldX = gp.tileSize * 8;
+        gp.monster[i].worldY = gp.tileSize * 10;
+
+        i++;
+        gp.monster[i] = new RedSlime(gp);
+        gp.monster[i].worldX = gp.tileSize * 24;
+        gp.monster[i].worldY = gp.tileSize * 34;
     }
 }

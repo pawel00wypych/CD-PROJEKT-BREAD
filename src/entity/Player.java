@@ -97,26 +97,26 @@ public class Player extends Entity{
 
     public void getPlayerImage() {
 
-        up1 = setup("/player/Walking sprites/boy_up_1", gp.tileSize, gp.tileSize);
-        up2 = setup("/player/Walking sprites/boy_up_2", gp.tileSize, gp.tileSize);
-        down1 = setup("/player/Walking sprites/boy_down_1", gp.tileSize, gp.tileSize);
-        down2 = setup("/player/Walking sprites/boy_down_2", gp.tileSize, gp.tileSize);
-        left1 = setup("/player/Walking sprites/boy_left_1", gp.tileSize, gp.tileSize);
-        left2 = setup("/player/Walking sprites/boy_left_2", gp.tileSize, gp.tileSize);
-        right1 = setup("/player/Walking sprites/boy_right_1", gp.tileSize, gp.tileSize);
-        right2 = setup("/player/Walking sprites/boy_right_2", gp.tileSize, gp.tileSize);
+        up1 = setup("/player/Walking sprites/bob_up_1", gp.tileSize, gp.tileSize);
+        up2 = setup("/player/Walking sprites/bob_up_2", gp.tileSize, gp.tileSize);
+        down1 = setup("/player/Walking sprites/bob_down_1", gp.tileSize, gp.tileSize);
+        down2 = setup("/player/Walking sprites/bob_down_2", gp.tileSize, gp.tileSize);
+        left1 = setup("/player/Walking sprites/bob_left_1", gp.tileSize, gp.tileSize);
+        left2 = setup("/player/Walking sprites/bob_left_2", gp.tileSize, gp.tileSize);
+        right1 = setup("/player/Walking sprites/bob_right_1", gp.tileSize, gp.tileSize);
+        right2 = setup("/player/Walking sprites/bob_right_2", gp.tileSize, gp.tileSize);
     }
 
     public void getPlayerAttackImage() {
 
-        attackUp1 = setup("/player/Attacking sprites/boy_attack_up_1", gp.tileSize, gp.tileSize *2);
-        attackUp2 = setup("/player/Attacking sprites/boy_attack_up_2", gp.tileSize, gp.tileSize *2);
-        attackDown1 = setup("/player/Attacking sprites/boy_attack_down_1", gp.tileSize, gp.tileSize *2);
-        attackDown2 = setup("/player/Attacking sprites/boy_attack_down_2", gp.tileSize, gp.tileSize *2);
-        attackLeft1 = setup("/player/Attacking sprites/boy_attack_left_1", gp.tileSize *2, gp.tileSize);
-        attackLeft2 = setup("/player/Attacking sprites/boy_attack_left_2", gp.tileSize *2, gp.tileSize);
-        attackRight1 = setup("/player/Attacking sprites/boy_attack_right_1", gp.tileSize *2, gp.tileSize);
-        attackRight2 = setup("/player/Attacking sprites/boy_attack_right_2", gp.tileSize *2, gp.tileSize);
+        attackUp1 = setup("/player/Attacking sprites/bob_attack_up_1", gp.tileSize, gp.tileSize *2);
+        attackUp2 = setup("/player/Attacking sprites/bob_attack_up_2", gp.tileSize, gp.tileSize *2);
+        attackDown1 = setup("/player/Attacking sprites/bob_attack_down_1", gp.tileSize, gp.tileSize *2);
+        attackDown2 = setup("/player/Attacking sprites/bob_attack_down_2", gp.tileSize, gp.tileSize *2);
+        attackLeft1 = setup("/player/Attacking sprites/bob_attack_left_1", gp.tileSize *2, gp.tileSize);
+        attackLeft2 = setup("/player/Attacking sprites/bob_attack_left_2", gp.tileSize *2, gp.tileSize);
+        attackRight1 = setup("/player/Attacking sprites/bob_attack_right_1", gp.tileSize *2, gp.tileSize);
+        attackRight2 = setup("/player/Attacking sprites/bob_attack_right_2", gp.tileSize *2, gp.tileSize);
 
 
     }
