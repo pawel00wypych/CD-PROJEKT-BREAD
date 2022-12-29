@@ -99,7 +99,7 @@ public class EventHandler {
 
     //one time heal event
     public void healingPool(int map,int eventCol, int eventRow){
-        gp.ui.showMessage("Your health and mana has been recovered!");
+
         gp.player.life = gp.player.maxLife;
         gp.player.mana = gp.player.maxMana;
 

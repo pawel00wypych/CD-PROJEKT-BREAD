@@ -1,6 +1,7 @@
 package main;
 
 import entity.Entity;
+import entity.Player;
 
 public class CollisionChecker {
 
@@ -29,6 +30,7 @@ public class CollisionChecker {
                 entityTopRow = (entityTopWorldY - entity.speed)/gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityTopRow];
+                checkTileDamage(entity, tileNum1, tileNum2);
                 if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
                     entity.collisionOn = true;
                 }
@@ -37,6 +39,7 @@ public class CollisionChecker {
                 entityBottomRow = (entityBottomWorldY + entity.speed)/gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityBottomRow];
                 tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityBottomRow];
+                checkTileDamage(entity, tileNum1, tileNum2);
                 if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
                     entity.collisionOn = true;
                 }
@@ -45,6 +48,7 @@ public class CollisionChecker {
                 entityLeftCol = (entityLeftWorldX - entity.speed)/gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityBottomRow];
+                checkTileDamage(entity, tileNum1, tileNum2);
                 if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
                     entity.collisionOn = true;
                 }
@@ -53,10 +57,17 @@ public class CollisionChecker {
                 entityRightCol = (entityRightWorldX + entity.speed)/gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityBottomRow];
+                checkTileDamage(entity, tileNum1, tileNum2);
                 if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
                     entity.collisionOn = true;
                 }
                 break;
+        }
+    }
+
+    public void checkTileDamage(Entity entity, int tileNum1, int tileNum2) {
+        if(entity.type == 0 && (gp.tileM.tile[tileNum1].damage || gp.tileM.tile[tileNum2].damage)) {
+            entity.damagePlayer(entity.defence+1);
         }
     }
 

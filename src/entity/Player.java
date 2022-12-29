@@ -49,6 +49,7 @@ public class Player extends Entity{
 
         // PLAYER STATUS
         maxLife = 6;
+        type = 0;
         life = maxLife;
         maxMana = 4;
         mana = maxMana;

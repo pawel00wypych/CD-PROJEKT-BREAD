@@ -140,6 +140,9 @@ public class TileManager {
             tile[index].image = ImageIO.read(getClass().getResourceAsStream("/tiles/"+imageName+".png"));
             tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
             tile[index].collision = collision;
+            if(imageName == "thorns00") {
+                tile[index].damage = true;
+            }
 
         }catch (IOException e) {
             e.printStackTrace();
