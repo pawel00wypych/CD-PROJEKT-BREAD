@@ -9,29 +9,30 @@ import object.OBJ_Rock;
 
 import java.util.Random;
 
-public class RedSlime extends Entity {
+public class Sunflower extends Entity {
+
 
 
     GamePanel gp;
 
-    public RedSlime(GamePanel gp) {
+    public Sunflower(GamePanel gp) {
 
         super(gp);
         this.gp = gp;
         type = 2;
-        name = "Red Slime";
-        speed = 2;
-        maxLife = 6;
+        name = "Sunflower";
+        speed = 1;
+        maxLife = 3;
         life = maxLife;
-        attack = 6;
-        defence = 1;
-        exp = 3;
+        attack = 2;
+        defence = 0;
+        exp = 2;
         projectile = new OBJ_Rock(gp);
 
-        solidArea.x = 3;
-        solidArea.y = 6;
-        solidArea.width = 42;
-        solidArea.height = 40;
+        solidArea.x = 6;
+        solidArea.y = 4;
+        solidArea.width = 32;
+        solidArea.height = 42;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -39,14 +40,14 @@ public class RedSlime extends Entity {
     }
 
     public void getImage() {
-        up1 = setup("/monster/RedSlime/RedSlime_up_1", gp.tileSize, gp.tileSize);
-        up2 = setup("/monster/RedSlime/RedSlime_up_2", gp.tileSize, gp.tileSize);
-        left1 = setup("/monster/RedSlime/RedSlime_left_1", gp.tileSize, gp.tileSize);
-        left2 = setup("/monster/RedSlime/RedSlime_left_2", gp.tileSize, gp.tileSize);
-        down1 = setup("/monster/RedSlime/RedSlime_down_1", gp.tileSize, gp.tileSize);
-        down2 = setup("/monster/RedSlime/RedSlime_down_2", gp.tileSize, gp.tileSize);
-        right1 = setup("/monster/RedSlime/RedSlime_right_1", gp.tileSize, gp.tileSize);
-        right2 = setup("/monster/RedSlime/RedSlime_right_2", gp.tileSize, gp.tileSize);
+        up1 = setup("/monster/sunflower/sunflower_up_1", gp.tileSize, gp.tileSize);
+        up2 = setup("/monster/sunflower/sunflower_up_2", gp.tileSize, gp.tileSize);
+        left1 = setup("/monster/sunflower/sunflower_left_1", gp.tileSize, gp.tileSize);
+        left2 = setup("/monster/sunflower/sunflower_left_2", gp.tileSize, gp.tileSize);
+        down1 = setup("/monster/sunflower/sunflower_down_1", gp.tileSize, gp.tileSize);
+        down2 = setup("/monster/sunflower/sunflower_down_2", gp.tileSize, gp.tileSize);
+        right1 = setup("/monster/sunflower/sunflower_right_1", gp.tileSize, gp.tileSize);
+        right2 = setup("/monster/sunflower/sunflower_right_2", gp.tileSize, gp.tileSize);
     }
 
     public void setAction() {
@@ -69,7 +70,7 @@ public class RedSlime extends Entity {
         }
 
         int i = new Random().nextInt(100) + 1;
-        if (i > 99 && !projectile.alive && shotAvailableCounter == 30) {
+        if (i > 40 && !projectile.alive && shotAvailableCounter == 30) {
 
             projectile.set(worldX, worldY, direction, true, this);
             gp.projectileList.add(projectile);
@@ -87,13 +88,13 @@ public class RedSlime extends Entity {
         int i = new Random().nextInt(100) + 1;
 
         //SET THE MONSTER DROP
-        if (i < 50) {
+        if (i < 70) {
             dropItem(new OBJ_Coin_Bronze(gp));
         }
-        if (i >= 50 && i < 75) {
+        if (i >= 70 && i < 90) {
             dropItem(new OBJ_Heart(gp));
         }
-        if (i >= 75 && i < 100) {
+        if (i >= 90 && i < 100) {
             dropItem(new OBJ_ManaCrystal(gp));
         }
     }

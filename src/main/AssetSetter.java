@@ -3,6 +3,8 @@ package main;
 import monster.GreenSlime;
 import monster.RedSlime;
 import object.*;
+import monster.Sunflower;
+
 
 public class AssetSetter {
 
@@ -119,5 +121,30 @@ public class AssetSetter {
         gp.monster[i] = new RedSlime(gp);
         gp.monster[i].worldX = gp.tileSize * 24;
         gp.monster[i].worldY = gp.tileSize * 34;
+
+        i++;
+        gp.monster[i] = new Sunflower(gp);
+        gp.monster[i].worldX = gp.tileSize * 30;
+        gp.monster[i].worldY = gp.tileSize * 6;
+
+        i++;
+        gp.monster[i] = new Sunflower(gp);
+        gp.monster[i].worldX = gp.tileSize * 28;
+        gp.monster[i].worldY = gp.tileSize * 33;
+
+        i++;
+        gp.monster[i] = new Sunflower(gp);
+        gp.monster[i].worldX = gp.tileSize * 28;
+        gp.monster[i].worldY = gp.tileSize * 35;
+
+        i++;
+        gp.monster[i] = new Sunflower(gp);
+        gp.monster[i].worldX = gp.tileSize * 32;
+        gp.monster[i].worldY = gp.tileSize * 32;
+
+        i++;
+        gp.monster[i] = new Sunflower(gp);
+        gp.monster[i].worldX = gp.tileSize * 33;
+        gp.monster[i].worldY = gp.tileSize * 41;
     }
 }
