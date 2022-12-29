@@ -17,6 +17,12 @@ public class Projectile extends Entity{
     }
     public void update(){
 
+        gp.colChecker.checkTile(this);
+        if(collisionOn) {
+            alive = false;
+            collisionOn = false;
+        }
+
         if(user == gp.player){
             int monsterIndex = gp.colChecker.checkEntity(this,gp.monster);
             if(monsterIndex != 999){

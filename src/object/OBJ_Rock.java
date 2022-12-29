@@ -14,6 +14,10 @@ public class OBJ_Rock extends Projectile {
         super(gp);
         this.gp = gp;
 
+        solidArea = new Rectangle(10,10,28,28);
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+        type = type_projectile;
         name = "Rock";
         speed = 8;
         maxLife = 80;

@@ -13,6 +13,10 @@ public class OBJ_Fireball extends Projectile {
         super(gp);
         this.gp = gp;
 
+        solidArea = new Rectangle(8,8,32,32);
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+        type = type_projectile;
         name = "Fireball";
         speed = 8;
         maxLife = 80;

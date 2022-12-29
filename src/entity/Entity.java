@@ -44,7 +44,7 @@ public class Entity {
     // CHARACTER ATTRIBUTES
     public String name;
     public int type; // 0 = player , 2 = monster
-
+    public final int type_projectile = 1;
     public final int type_pickUpOnly = 3;
     public final int type_consumable = 4;
     public int maxLife;

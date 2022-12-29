@@ -51,7 +51,7 @@ public class Player extends Entity{
         maxLife = 6;
         type = 0;
         life = maxLife;
-        maxMana = 4;
+        maxMana = 8;
         mana = maxMana;
         level = 1;
         strength = 1; //more strength -> more damage

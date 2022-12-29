@@ -48,15 +48,15 @@ public class EventHandler {
                 damagePit();
             }
             //healing pool in tile 3/3
-            else if(hit(0,8,8,"any")){
-                healingPool(0,2,2);
+            if(hit(0,20,40,"any")){
+                healingPool(0,40,20);
             }
             //transition to map2
-            else if(hit(0,40,40,"any")){
+            if(hit(0,40,40,"any")){
                 teleport(1,22,22);
             }
             //go back to map1
-            else if(hit(1,22,22,"any")){
+            if(hit(1,22,22,"any")){
                 teleport(0,40,40);
             }
         }
@@ -75,6 +75,7 @@ public class EventHandler {
             if (gp.player.solidArea.intersects(eventRect[map][eventCol][eventRow]) && !eventRect[map][eventCol][eventRow].eventDone) {
                 if(gp.player.direction.contentEquals(reqDirection) || reqDirection.contentEquals("any")){
                     hit = true;
+                    System.out.println("healing pool");
                     previousEventX = gp.player.worldX;
                     previousEventY = gp.player.worldY;
                 }
@@ -99,9 +100,11 @@ public class EventHandler {
 
     //one time heal event
     public void healingPool(int map,int eventCol, int eventRow){
+        System.out.println("healing pool 2");
 
         gp.player.life = gp.player.maxLife;
         gp.player.mana = gp.player.maxMana;
+       // canTouchEvent = false;
 
         eventRect[map][eventCol][eventRow].eventDone = true;
         gp.aSetter.setMonster();
