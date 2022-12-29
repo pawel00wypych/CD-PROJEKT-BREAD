@@ -29,6 +29,7 @@ public class UI {
     public int commandNum = 0;
     public int titleScreenState = 0; //0: first screen, 1: second screen
     int subState = 0;
+    int counter = 0;
 
     public UI(GamePanel gp) {
 
@@ -103,6 +104,10 @@ public class UI {
         if(gp.gameState == gp.gameOverState){
             drawGameOverScreen();
         }
+        // TRANSITION STATE
+        if(gp.gameState == gp.transitionState){
+            drawTransition();
+        }
 //        if(gameFinished){
 //
 //            g2.setFont(arial_40);
@@ -162,6 +167,22 @@ public class UI {
 //        }
 
     }
+    public void drawTransition(){
+        counter++;
+        g2.setColor(new Color(0,0,0,counter*5));
+        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+
+        if(counter == 50){
+            counter = 0;
+            gp.gameState = gp.playState;
+            gp.currentMap = gp.eHandler.tempMap;
+            gp.player.worldX = gp.tileSize * gp.eHandler.tempCol;
+            gp.player.worldY = gp.tileSize * gp.eHandler.tempRow;
+            gp.eHandler.previousEventX = gp.player.worldX;
+            gp.eHandler.previousEventY = gp.player.worldY;
+        }
+    }
+
     public void drawGameOverScreen(){
         g2.setColor(new Color(0,0,0,150));
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
@@ -198,9 +219,6 @@ public class UI {
         if(commandNum == 1){
             g2.drawString(">",x-40,y);
         }
-
-
-        //back to the title screen
     }
     public void drawOptionsScreen(){
         g2.setColor(Color.white);
@@ -396,6 +414,8 @@ public class UI {
             if(gp.keyH.enterPressed){
                 subState = 0;
                 gp.gameState = gp.titleState;
+                gp.stopMusic();
+                gp.playMusic(5);
                 gp.restart();
             }
         }
