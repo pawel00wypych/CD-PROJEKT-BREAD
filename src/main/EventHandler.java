@@ -16,10 +16,10 @@ public class EventHandler {
         int row = 0;
         while(map < gp.maxMap && col < gp.maxWorldCol && row<gp.maxWorldRow){
             eventRect[map][col][row] = new EventRect();
-            eventRect[map][col][row].x = 23;
-            eventRect[map][col][row].y = 23;
-            eventRect[map][col][row].width = 2;
-            eventRect[map][col][row].height = 2;
+            eventRect[map][col][row].x = 5;
+            eventRect[map][col][row].y = 5;
+            eventRect[map][col][row].width = 40;
+            eventRect[map][col][row].height = 40;
             eventRect[map][col][row].eventRectDefaultX = eventRect[map][col][row].x;
             eventRect[map][col][row].eventRectDefaultY = eventRect[map][col][row].y;
             col++;
@@ -43,21 +43,20 @@ public class EventHandler {
         }
 
         if(canTouchEvent){
-            //Damage pit in tile 2/2
-            if(hit(0,2,2,"any")){
+
+            if(hit(0,20,40,"any")){
+                healingPool(0,20,40);
+            }
+            else if(hit(0,4,4,"any")){
                 damagePit();
             }
-            //healing pool in tile 3/3
-            if(hit(0,20,40,"any")){
-                healingPool(0,40,20);
-            }
             //transition to map2
-            if(hit(0,40,40,"any")){
+            else if(hit(0,40,40,"any")){
                 teleport(1,22,22);
             }
             //go back to map1
-            if(hit(1,22,22,"any")){
-                teleport(0,40,40);
+               else if(hit(1,22,22,"any")){
+               teleport(0,40,40);
             }
         }
 
@@ -70,12 +69,12 @@ public class EventHandler {
             gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
             gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
             eventRect[map][eventCol][eventRow].x = eventCol * gp.tileSize + eventRect[map][eventCol][eventRow].x;
-            eventRect[map][eventCol][eventRow].y = eventCol * gp.tileSize + eventRect[map][eventCol][eventRow].y;
+            eventRect[map][eventCol][eventRow].y = eventRow * gp.tileSize + eventRect[map][eventCol][eventRow].y;
 
             if (gp.player.solidArea.intersects(eventRect[map][eventCol][eventRow]) && !eventRect[map][eventCol][eventRow].eventDone) {
+
                 if(gp.player.direction.contentEquals(reqDirection) || reqDirection.contentEquals("any")){
                     hit = true;
-                    System.out.println("healing pool");
                     previousEventX = gp.player.worldX;
                     previousEventY = gp.player.worldY;
                 }
@@ -100,14 +99,13 @@ public class EventHandler {
 
     //one time heal event
     public void healingPool(int map,int eventCol, int eventRow){
-        System.out.println("healing pool 2");
 
         gp.player.life = gp.player.maxLife;
         gp.player.mana = gp.player.maxMana;
-       // canTouchEvent = false;
+        canTouchEvent = false;
 
         eventRect[map][eventCol][eventRow].eventDone = true;
-        gp.aSetter.setMonster();
+        //gp.aSetter.setMonster();
     }
     public void teleport(int map, int col, int row){
         gp.gameState = gp.transitionState;

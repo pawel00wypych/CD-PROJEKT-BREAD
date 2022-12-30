@@ -128,7 +128,6 @@ public class KeyHandler implements KeyListener {
 
                 if (gp.ui.commandNum == 0) {
 
-                    System.out.println("Do some fighter stuff");
                     gp.gameState = gp.playState;
                     gp.stopMusic();
                     gp.playMusic(6);
