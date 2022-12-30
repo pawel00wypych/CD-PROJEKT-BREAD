@@ -52,14 +52,34 @@ public class Wolf extends Entity {
             Random random = new Random();
             int i = random.nextInt(100) + 1;
 
-            if (i <= 25)
+            if (i <= 25) {
                 direction = "up";
-            if (i <= 50 && i > 25)
+                solidArea.x = 9;
+                solidArea.y = 12;
+                solidArea.width = 30;
+                solidArea.height = 75;
+            }
+            if (i <= 50 && i > 25) {
                 direction = "down";
-            if (i <= 75 && i > 50)
+                solidArea.x = 9;
+                solidArea.y = 14;
+                solidArea.width = 30;
+                solidArea.height = 75;
+            }
+            if (i <= 75 && i > 50) {
                 direction = "left";
-            if (i > 75)
+                solidArea.x = 6;
+                solidArea.y = 12;
+                solidArea.width = 84;
+                solidArea.height = 34;
+            }
+            if (i > 75) {
                 direction = "right";
+                solidArea.x = 10;
+                solidArea.y = 12;
+                solidArea.width = 84;
+                solidArea.height = 34;
+            }
             actionLockCounter = 0;
         }
 
