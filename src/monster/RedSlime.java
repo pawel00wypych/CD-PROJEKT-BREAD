@@ -21,10 +21,10 @@ public class RedSlime extends Entity {
         type = 2;
         name = "Red Slime";
         speed = 2;
-        maxLife = 6;
+        maxLife = 7;
         life = maxLife;
         attack = 6;
-        defence = 1;
+        defence = 2;
         exp = 3;
         projectile = new OBJ_Rock(gp);
 
@@ -79,7 +79,7 @@ public class RedSlime extends Entity {
 
     public void damageReaction() {
         actionLockCounter = 0;
-        direction = gp.player.direction;
+        direction = getOppositeDirection(gp.player.direction);
     }
 
     public void checkDrop() {

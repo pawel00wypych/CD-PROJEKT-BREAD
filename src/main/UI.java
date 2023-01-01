@@ -3,6 +3,7 @@ package main;
 import entity.Entity;
 import entity.Player;
 import object.OBJ_Heart;
+import object.OBJ_Key;
 import object.OBJ_ManaCrystal;
 
 import java.awt.*;
@@ -17,9 +18,8 @@ public class UI {
 
     Graphics2D g2;
     Font retroGaming;
-//    BufferedImage keyImage;
 
-    BufferedImage heart_full, heart_half, heart_blank, crystal_full, crystal_blank;
+    BufferedImage heart_full, heart_half, heart_blank, crystal_full, crystal_blank, keyImage;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -46,8 +46,8 @@ public class UI {
             e.printStackTrace();
         }
 
-//        OBJ_Key key = new OBJ_Key(gp);
-//        keyImage = key.image;
+        Entity key = new OBJ_Key(gp);
+        keyImage = key.down1;
 
         Entity heart = new OBJ_Heart(gp);
         heart_full = heart.image;
@@ -82,11 +82,13 @@ public class UI {
             
             drawPlayerLife();
             drawPlayerMana();
+            drawPlayerKeys();
         }
         // PAUSE STATE
         if (gp.gameState == gp.pauseState) {
             drawPlayerLife();
             drawPlayerMana();
+            drawPlayerKeys();
             drawPauseScreen();
         }
         // CHARACTER STATE
@@ -431,6 +433,18 @@ public class UI {
                 commandNum = 4;
             }
         }
+    }
+
+    public void drawPlayerKeys() {
+        int x = gp.tileSize/2 - 5;
+        int y = gp.tileSize * 3 - 20;
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 28F));
+        //g2.setColor(new Color(255, 255, 255));
+        g2.drawImage(keyImage, x, y, null);
+        x += gp.tileSize - 10;
+        y += 35;
+        g2.drawString(Integer.toString(gp.player.hasKey),x,y);
+
     }
 
     public void drawPlayerLife() {

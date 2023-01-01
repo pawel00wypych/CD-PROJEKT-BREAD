@@ -59,7 +59,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     // ENTITY AND OBJECT
     public Player player = new Player(this, keyH);
-    public Entity[][] monster = new Entity[maxMap][20];
+    public Entity[][] monster = new Entity[maxMap][40];
 
     //you can display 50 objects at screen
     public Entity[][] obj = new Entity[maxMap][30];

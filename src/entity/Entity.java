@@ -131,7 +131,7 @@ public class Entity {
 
             int damage = attack - gp.player.defence;
             if(damage<0)
-                damage = 0;
+                damage = 1;
 
             gp.player.life -= damage;
             gp.player.invincible = true;
@@ -297,5 +297,26 @@ public class Entity {
         gp.particleList.add(p2);
         gp.particleList.add(p3);
         gp.particleList.add(p4);
+    }
+
+    public String getOppositeDirection(String direction) {
+
+        switch (direction) {
+
+            case "up":
+                direction = "down";
+                break;
+            case "down":
+                direction = "up";
+                break;
+            case "left":
+                direction = "right";
+                break;
+            case "right":
+                direction = "left";
+                break;
+        }
+
+        return direction;
     }
 }

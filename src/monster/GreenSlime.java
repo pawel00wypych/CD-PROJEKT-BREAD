@@ -19,10 +19,10 @@ public class GreenSlime extends Entity {
         type = 2;
         name = "Green Slime";
         speed = 1;
-        maxLife = 4;
+        maxLife = 5;
         life = maxLife;
         attack = 4;
-        defence = 0;
+        defence = 1;
         exp = 2;
         projectile = new OBJ_Rock(gp);
 

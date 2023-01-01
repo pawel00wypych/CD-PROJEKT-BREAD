@@ -57,7 +57,7 @@ public class Player extends Entity{
         strength = 1; //more strength -> more damage
         dexterity = 1; //more dexterity -> more defence
         exp = 0;
-        nextLevelExp = 4;
+        nextLevelExp = 6;
         coin = 0;
         currentWeapon = new OBJ_Sword_Normal(gp);
         currentShield = new OBJ_Shield_Wood(gp);
@@ -290,7 +290,6 @@ public class Player extends Entity{
                         gp.playSE(1);
                         hasKey++;
                         gp.obj[gp.currentMap][i] = null;
-                        gp.ui.showMessage("You got a key!");
                         break;
                     case "Door":
                         if (hasKey > 0) {
@@ -298,9 +297,6 @@ public class Player extends Entity{
                             gp.playSE(3);
                             gp.obj[gp.currentMap][i] = null;
                             hasKey--;
-                            gp.ui.showMessage("You opened the door!");
-                        } else {
-                            gp.ui.showMessage("You need a key!");
                         }
                         break;
                     case "Boots":
@@ -404,7 +400,7 @@ public class Player extends Entity{
                 gp.playSE(8);
                 int damage = gp.monster[gp.currentMap][i].attack - defence;
                 if(damage<0)
-                    damage = 0;
+                    damage = 1;
 
                 life -= damage;
                 invincible = true;
@@ -442,6 +438,7 @@ public class Player extends Entity{
 
             level++;
             nextLevelExp = nextLevelExp + 6;
+            exp = 0;
             maxLife += 2;
             life = maxLife;
             strength++;

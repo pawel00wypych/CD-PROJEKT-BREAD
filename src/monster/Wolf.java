@@ -17,16 +17,16 @@ public class Wolf extends Entity {
         type = 2;
         name = "Wolf";
         speed = 2;
-        maxLife = 12;
+        maxLife = 14;
         life = maxLife;
         attack = 8;
-        defence = 2;
-        exp = 6;
+        defence = 3;
+        exp = 5;
 
-        solidArea.x = 3;
-        solidArea.y = 6;
-        solidArea.width = 42;
-        solidArea.height = 40;
+        solidArea.x = 9;
+        solidArea.y = 14;
+        solidArea.width = 30;
+        solidArea.height = 75;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -47,7 +47,6 @@ public class Wolf extends Entity {
     public void setAction() {
 
         actionLockCounter++;
-
         if (actionLockCounter == 120) {
             Random random = new Random();
             int i = random.nextInt(100) + 1;
@@ -80,6 +79,7 @@ public class Wolf extends Entity {
                 solidArea.width = 84;
                 solidArea.height = 34;
             }
+
             actionLockCounter = 0;
         }
 
@@ -87,19 +87,12 @@ public class Wolf extends Entity {
 
     public void damageReaction() {
         actionLockCounter = 0;
-        direction = gp.player.direction;
+        direction = getOppositeDirection(gp.player.direction);
     }
+
 
     public void checkDrop() {
 
-        int i = new Random().nextInt(100) + 1;
-
-        //SET THE MONSTER DROP
-        if (i < 75) {
-            dropItem(new OBJ_Key(gp));
-        }
-        if (i >= 75 && i < 100) {
-            dropItem(new OBJ_Heart(gp));
-        }
+        dropItem(new OBJ_Key(gp));
     }
 }
