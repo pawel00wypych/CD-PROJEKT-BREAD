@@ -9,13 +9,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Objects;
 
 public class TileManager {
 
     GamePanel gp;
     public Tile[] tile;
 
-    public int mapTileNum[][][];
+    public int[][][] mapTileNum;
 
     public TileManager(GamePanel gp) {
 
@@ -140,7 +141,7 @@ public class TileManager {
             tile[index].image = ImageIO.read(getClass().getResourceAsStream("/tiles/"+imageName+".png"));
             tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
             tile[index].collision = collision;
-            if(imageName == "thorns00") {
+            if(Objects.equals(imageName, "thorns00")) {
                 tile[index].damage = true;
             }
 
@@ -167,7 +168,7 @@ public class TileManager {
 
                 while (col < gp.maxWorldCol) {
 
-                    String numbers[] = line.split(" ");
+                    String[] numbers = line.split(" ");
 
                     int num = Integer.parseInt(numbers[col]);
 
@@ -184,7 +185,7 @@ public class TileManager {
             br.close();
 
         }catch(Exception e) {
-
+            e.printStackTrace();
         }
     }
 

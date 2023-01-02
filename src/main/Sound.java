@@ -9,7 +9,7 @@ import java.net.URL;
 public class Sound {
 
     Clip clip;
-    URL soundURL[] = new URL[30];
+    URL[] soundURL = new URL[30];
     FloatControl fc;
     int volumeScale = 3;
     float volume;
@@ -46,7 +46,7 @@ public class Sound {
             fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             checkVolume();
         }catch(Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 

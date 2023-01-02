@@ -1,7 +1,6 @@
 package main;
 
 import entity.Entity;
-import entity.Player;
 import object.OBJ_Heart;
 import object.OBJ_Key;
 import object.OBJ_ManaCrystal;
@@ -461,7 +460,6 @@ public class UI {
         }
 
         x = gp.tileSize/2;
-        y = gp.tileSize/2;
         i = 0;
 
         // DRAW CURRENT LIFE
@@ -550,7 +548,7 @@ public class UI {
 
             text = "LOAD GAME";
             x = getXforCenteredText(text);
-            y2 += gp.tileSize * 1;
+            y2 += gp.tileSize;
             g2.drawString(text, x, y2);
             if (commandNum == 1) {
 
@@ -559,7 +557,7 @@ public class UI {
 
             text = "QUIT";
             x = getXforCenteredText(text);
-            y2 += gp.tileSize * 1;
+            y2 += gp.tileSize;
             g2.drawString(text, x, y2);
             if (commandNum == 2) {
 
@@ -648,7 +646,7 @@ public class UI {
         g2.drawString("Weapon",textX,textY);
         textY+=lineHeight+15;
         g2.drawString("Shield",textX,textY);
-        textY+=lineHeight;
+
 
         //VALUES
         int tailX = (frameX + frameWidth)-30;
@@ -660,12 +658,12 @@ public class UI {
         g2.drawString(value,textX,textY);
         textY+=lineHeight;
 
-        value = String.valueOf(gp.player.life + "/" + gp.player.maxLife);
+        value = gp.player.life + "/" + gp.player.maxLife;
         textX = getXforAlignRightText(value,tailX);
         g2.drawString(value,textX,textY);
         textY+=lineHeight;
 
-        value = String.valueOf(gp.player.mana + "/" + gp.player.maxMana);
+        value = gp.player.mana + "/" + gp.player.maxMana;
         textX = getXforAlignRightText(value,tailX);
         g2.drawString(value,textX,textY);
         textY+=lineHeight;
@@ -722,16 +720,14 @@ public class UI {
     public int getXforCenteredText(String text) {
 
         int textLength = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-        int x = gp.screenWidth/2 - textLength/2;
 
-        return x;
+        return gp.screenWidth/2 - textLength/2;
     }
     public int getXforAlignRightText(String text,int tailX) {
 
         int textLength = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-        int x = tailX - textLength;
 
-        return x;
+        return tailX - textLength;
     }
 
     public void drawLevelUpState() {

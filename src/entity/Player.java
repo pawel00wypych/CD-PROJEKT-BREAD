@@ -2,17 +2,12 @@ package entity;
 
 import main.GamePanel;
 import main.KeyHandler;
-import main.UtilityTool;
 import object.OBJ_Fireball;
-import object.OBJ_Rock;
 import object.OBJ_Shield_Wood;
 import object.OBJ_Sword_Normal;
 
-
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 public class Player extends Entity{
 
@@ -165,20 +160,7 @@ public class Player extends Entity{
 
                 // IF FALSE PLAYER CAN MOVE
                 if(!collisionOn && !keyH.enterPressed) {
-                    switch (direction) {
-                        case "up":
-                            worldY -= speed;
-                            break;
-                        case "down":
-                            worldY += speed;
-                            break;
-                        case "left":
-                            worldX -= speed;
-                            break;
-                        case "right":
-                            worldX += speed;
-                            break;
-                    }
+                    adjustPosition();
                 }
 
                 gp.keyH.enterPressed = false;
@@ -301,10 +283,6 @@ public class Player extends Entity{
                         }
                         break;
                     case "Boots":
-
-                        gp.obj[gp.currentMap][i].use(this);
-                        gp.obj[gp.currentMap][i] = null;
-                        break;
                     case "Bronze Coin":
 
                         gp.obj[gp.currentMap][i].use(this);

@@ -42,10 +42,9 @@ public class OBJ_Rock extends Projectile {
 
         boolean haveResource = false;
 
-        if(user.ammo >= useCost) {
-
+        if(user.ammo >= useCost)
             haveResource = true;
-        }
+
         return haveResource;
     }
 
@@ -54,22 +53,18 @@ public class OBJ_Rock extends Projectile {
     }
 
     public Color getParticleColor() {
-        Color color = new Color(40, 50, 0);
-        return color;
+        return new Color(40, 50, 0);
     }
 
     public int getParticleSize() {
-        int size = 6; // 0 pixels
-        return size;
+        return 6;
     }
 
     public int getParticleSpeed() {
-        int speed = 1;
-        return speed;
+        return 1;
     }
 
     public int getParticleMaxLife() {
-        int maxLife = 15;
-        return maxLife;
+        return 15;
     }
 }

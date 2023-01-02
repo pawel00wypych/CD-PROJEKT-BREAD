@@ -41,10 +41,9 @@ public class OBJ_Fireball extends Projectile {
 
         boolean haveResource = false;
 
-        if(user.mana >= useCost) {
-
+        if(user.mana >= useCost)
             haveResource = true;
-        }
+
         return haveResource;
     }
 
@@ -53,22 +52,18 @@ public class OBJ_Fireball extends Projectile {
     }
 
     public Color getParticleColor() {
-        Color color = new Color(240, 50, 0);
-        return color;
+        return new Color(240, 50, 0);
     }
 
     public int getParticleSize() {
-        int size = 8; // 0 pixels
-        return size;
+        return 8;
     }
 
     public int getParticleSpeed() {
-        int speed = 1;
-        return speed;
+        return 1;
     }
 
     public int getParticleMaxLife() {
-        int maxLife = 20;
-        return maxLife;
+        return 20;
     }
 }

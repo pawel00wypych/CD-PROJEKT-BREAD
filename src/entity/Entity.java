@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Random;
 
 public class Entity {
 
@@ -47,7 +48,6 @@ public class Entity {
     public int type; // 0 = player , 2 = monster
     public final int type_projectile = 1;
     public final int type_pickUpOnly = 3;
-    public final int type_consumable = 4;
     public int maxLife;
     public int life;
     public int speed;
@@ -79,7 +79,38 @@ public class Entity {
         this.gp = gp;
     }
 
-    public void setAction(){}
+    public void setAction(){
+        if(type == 2) {
+            randomMove();
+
+            int i = new Random().nextInt(100) + 1;
+            if (i > 99 && !projectile.alive && shotAvailableCounter == 30) {
+
+                projectile.set(worldX, worldY, direction, true, this);
+                gp.projectileList.add(projectile);
+                shotAvailableCounter = 0;
+            }
+        }
+    }
+
+    public void randomMove() {
+        actionLockCounter++;
+
+        if (actionLockCounter == 120) {
+            Random random = new Random();
+            int i = random.nextInt(100) + 1;
+
+            if (i <= 25)
+                direction = "up";
+            if (i <= 50 && i > 25)
+                direction = "down";
+            if (i <= 75 && i > 50)
+                direction = "left";
+            if (i > 75)
+                direction = "right";
+            actionLockCounter = 0;
+        }
+    }
 
     public void damageReaction() {}
 
@@ -99,7 +130,7 @@ public class Entity {
                 knockBackCounter = 0;
                 knockBack = false;
                 speed = defaultSpeed;
-            } else if(!collisionOn) {
+            } else {
 
                 switch (gp.player.direction) {
                     case "up": worldY -= speed; break;
@@ -130,12 +161,7 @@ public class Entity {
             }
 
             if(!collisionOn) {
-                switch (direction) {
-                    case "up": worldY -= speed; break;
-                    case "down": worldY += speed; break;
-                    case "left": worldX -= speed; break;
-                    case "right": worldX += speed; break;
-                }
+                adjustPosition();
             }
         }
 
@@ -159,6 +185,15 @@ public class Entity {
         }
         if(shotAvailableCounter < 30) {
             shotAvailableCounter++;
+        }
+    }
+
+    public void adjustPosition() {
+        switch (direction) {
+            case "up": worldY -= speed; break;
+            case "down": worldY += speed; break;
+            case "left": worldX -= speed; break;
+            case "right": worldX += speed; break;
         }
     }
 
@@ -301,23 +336,19 @@ public class Entity {
     public void use(Entity entity) {}
 
     public Color getParticleColor() {
-        Color color = null;
-        return color;
+        return null;
     }
 
     public int getParticleSize() {
-        int size = 0; // 0 pixels
-        return size;
+        return 0;
     }
 
     public int getParticleSpeed() {
-        int speed = 0;
-        return speed;
+        return 0;
     }
 
     public int getParticleMaxLife() {
-        int maxLife = 0;
-        return maxLife;
+        return 0;
     }
 
     public void generateParticle(Entity generator, Entity target) {

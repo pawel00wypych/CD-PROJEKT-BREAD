@@ -48,25 +48,10 @@ public class GreenSlime extends Entity {
     }
     public void setAction(){
 
-        actionLockCounter ++;
+        randomMove();
 
-        if(actionLockCounter == 120){
-            Random random = new Random();
-            int i = random.nextInt(100)+1;
-
-            if(i<=25)
-                direction = "up";
-            if(i<=50 && i>25)
-                direction = "down";
-            if(i<=75 && i>50)
-                direction = "left";
-            if(i>75)
-                direction = "right";
-            actionLockCounter = 0;
-        }
-
-        int i = new Random().nextInt(100)+1;
-        if(i > 99 && !projectile.alive && shotAvailableCounter == 30) {
+        int i = new Random().nextInt(100) + 1;
+        if (i > 99 && !projectile.alive && shotAvailableCounter == 30) {
 
             projectile.set(worldX, worldY, direction, true, this);
             gp.projectileList.add(projectile);

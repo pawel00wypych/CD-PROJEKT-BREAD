@@ -42,12 +42,7 @@ public class Projectile extends Entity{
 
         }
 
-        switch (direction){
-            case "up": worldY -= speed; break;
-            case "down": worldY += speed; break;
-            case "left": worldX -= speed; break;
-            case "right": worldX += speed; break;
-        }
+        adjustPosition();
         life--;
         if(life <= 0){
             alive = false;
@@ -69,8 +64,7 @@ public class Projectile extends Entity{
 
     public boolean haveResource(Entity user) {
 
-        boolean haveResource = false;
-        return haveResource;
+        return false;
     }
 
     public void subtractResource(Entity user) {}
