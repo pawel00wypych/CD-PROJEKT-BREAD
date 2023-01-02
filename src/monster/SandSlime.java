@@ -19,7 +19,8 @@ public class SandSlime extends Entity {
         this.gp = gp;
         type = 2;
         name = "Sand Slime";
-        speed = 1;
+        defaultSpeed = 1;
+        speed = defaultSpeed;
         maxLife = 12;
         life = maxLife;
         attack = 8;
@@ -77,6 +78,7 @@ public class SandSlime extends Entity {
     }
 
     public void damageReaction() {
+
         actionLockCounter = 0;
         direction = getOppositeDirection(gp.player.direction);
     }

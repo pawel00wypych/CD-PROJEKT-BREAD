@@ -44,7 +44,8 @@ public class Player extends Entity{
 
         worldX = gp.tileSize * 24;
         worldY = gp.tileSize * 24;
-        speed = 4;
+        defaultSpeed = 4;
+        speed = defaultSpeed;
         direction = "down";
 
         // PLAYER STATUS
@@ -301,10 +302,8 @@ public class Player extends Entity{
                         break;
                     case "Boots":
 
-                        gp.playSE(2);
-                        speed += 2;
+                        gp.obj[gp.currentMap][i].use(this);
                         gp.obj[gp.currentMap][i] = null;
-                        gp.ui.showMessage("Speed up!");
                         break;
                     case "Bronze Coin":
 
@@ -414,6 +413,8 @@ public class Player extends Entity{
             if(!gp.monster[gp.currentMap][i].invincible) {
                 gp.playSE(7);
 
+                knockBack(gp.monster[gp.currentMap][i]);
+
                 int damage = attack - gp.monster[gp.currentMap][i].defence;
 
                 if(damage < 0)
@@ -432,12 +433,19 @@ public class Player extends Entity{
         }
     }
 
+    public void knockBack(Entity entity) {
+
+        entity.direction = direction;
+        entity.speed += 10;
+        entity.knockBack = true;
+    }
+
     public void checkLevelUp() {
 
         if(exp >= nextLevelExp) {
 
             level++;
-            nextLevelExp = nextLevelExp + 6;
+            nextLevelExp = nextLevelExp + 7;
             exp = 0;
             maxLife += 2;
             life = maxLife;

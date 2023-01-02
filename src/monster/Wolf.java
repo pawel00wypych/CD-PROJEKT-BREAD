@@ -16,7 +16,8 @@ public class Wolf extends Entity {
         this.gp = gp;
         type = 2;
         name = "Wolf";
-        speed = 2;
+        defaultSpeed = 2;
+        speed = defaultSpeed;
         maxLife = 14;
         life = maxLife;
         attack = 8;
@@ -86,6 +87,7 @@ public class Wolf extends Entity {
     }
 
     public void damageReaction() {
+
         actionLockCounter = 0;
         direction = getOppositeDirection(gp.player.direction);
     }

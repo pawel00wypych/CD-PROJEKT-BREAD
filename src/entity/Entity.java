@@ -30,7 +30,7 @@ public class Entity {
     public boolean alive = true;
     public boolean dying = false;
     boolean hpBarOn = false;
-
+    public boolean knockBack = false;
 
     // COUNTER
     public int spriteCounter = 0;
@@ -38,6 +38,7 @@ public class Entity {
     public int invincibleCounter = 0;
     int dyingCounter = 0;
     int hpBarCounter = 0;
+    int knockBackCounter = 0;
     public int shotAvailableCounter = 0;
 
 
@@ -50,6 +51,7 @@ public class Entity {
     public int maxLife;
     public int life;
     public int speed;
+    public int defaultSpeed;
     public int level;
     public int strength;
     public int dexterity;
@@ -79,29 +81,65 @@ public class Entity {
 
     public void setAction(){}
 
-    public void damageReaction(){}
+    public void damageReaction() {}
 
     public void update(){
 
-        setAction();
-        collisionOn = false;
-        gp.colChecker.checkTile(this);
-        gp.colChecker.checkObject(this,false);
-        gp.colChecker.checkEntity(this,gp.monster);
-        boolean contactPlayer = gp.colChecker.checkPlayer(this);
 
-        if(this.type == 2 && contactPlayer){
-            damagePlayer(attack);
-        }
+        if(knockBack) {
 
-        if(!collisionOn) {
-            switch (direction) {
-                case "up": worldY -= speed; break;
-                case "down": worldY += speed; break;
-                case "left": worldX -= speed; break;
-                case "right": worldX += speed; break;
+            collisionOn = false;
+
+            gp.colChecker.checkTile(this);
+            gp.colChecker.checkObject(this,false);
+            gp.colChecker.checkEntity(this,gp.monster);
+
+            if(collisionOn) {
+
+                knockBackCounter = 0;
+                knockBack = false;
+                speed = defaultSpeed;
+            } else if(!collisionOn) {
+
+                switch (gp.player.direction) {
+                    case "up": worldY -= speed; break;
+                    case "down": worldY += speed; break;
+                    case "left": worldX -= speed; break;
+                    case "right": worldX += speed; break;
+                }
+            }
+
+            knockBackCounter++;
+            if(knockBackCounter >= 5) {
+
+                knockBackCounter = 0;
+                knockBack = false;
+                speed = defaultSpeed;
+            }
+        } else {
+
+            setAction();
+            collisionOn = false;
+            gp.colChecker.checkTile(this);
+            gp.colChecker.checkObject(this,false);
+            gp.colChecker.checkEntity(this,gp.monster);
+            boolean contactPlayer = gp.colChecker.checkPlayer(this);
+
+            if(this.type == 2 && contactPlayer){
+                damagePlayer(attack);
+            }
+
+            if(!collisionOn) {
+                switch (direction) {
+                    case "up": worldY -= speed; break;
+                    case "down": worldY += speed; break;
+                    case "left": worldX -= speed; break;
+                    case "right": worldX += speed; break;
+                }
             }
         }
+
+
         spriteCounter++;
         if (spriteCounter > 12) {
             if (spriteNumber == 1) {

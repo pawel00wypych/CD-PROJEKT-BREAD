@@ -18,7 +18,8 @@ public class GreenSlime extends Entity {
         this.gp = gp;
         type = 2;
         name = "Green Slime";
-        speed = 1;
+        defaultSpeed = 1;
+        speed = defaultSpeed;
         maxLife = 5;
         life = maxLife;
         attack = 4;
@@ -74,6 +75,7 @@ public class GreenSlime extends Entity {
     }
 
     public void damageReaction() {
+
         actionLockCounter = 0;
         direction = gp.player.direction;
     }

@@ -20,7 +20,8 @@ public class RedSlime extends Entity {
         this.gp = gp;
         type = 2;
         name = "Red Slime";
-        speed = 2;
+        defaultSpeed = 2;
+        speed = defaultSpeed;
         maxLife = 7;
         life = maxLife;
         attack = 6;
@@ -78,6 +79,7 @@ public class RedSlime extends Entity {
     }
 
     public void damageReaction() {
+
         actionLockCounter = 0;
         direction = getOppositeDirection(gp.player.direction);
     }
