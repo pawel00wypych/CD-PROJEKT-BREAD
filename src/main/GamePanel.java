@@ -79,6 +79,7 @@ public class GamePanel extends JPanel implements Runnable{
     public final int gameOverState = 7;
     public int levelUpState = 5;
     public final int transitionState = 8;
+    public final int gameEndState = 9;
 
     public GamePanel() {
 
@@ -111,8 +112,10 @@ public class GamePanel extends JPanel implements Runnable{
         aSetter.setMonster();
         stopMusic();
         playMusic(6);
+        currentMap = 0;
     }
     public void restart(){
+        currentMap = 0;
         player.setDefaultValues();
         player.setDefaultPositions();
         player.restoreLifeAndMana();

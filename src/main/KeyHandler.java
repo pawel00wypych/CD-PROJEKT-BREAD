@@ -51,6 +51,26 @@ public class KeyHandler implements KeyListener {
         else if(gp.gameState == gp.gameOverState){
             gameOverState(code);
         }
+        //GAME Finished
+        else if(gp.gameState == gp.gameEndState){
+            gameEndState(code);
+        }
+    }
+
+    public void gameEndState(int code){
+        gp.ui.commandNum = 0;
+        if(code == KeyEvent.VK_W){
+            gp.playSE(11);
+        }
+        if(code == KeyEvent.VK_S){
+            gp.playSE(11);
+        }
+        if(code == KeyEvent.VK_ENTER){
+            if(gp.ui.commandNum == 0){
+                gp.gameState = gp.titleState;
+                gp.restart();
+            }
+        }
     }
     public void gameOverState(int code){
         if(code == KeyEvent.VK_W){

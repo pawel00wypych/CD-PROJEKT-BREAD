@@ -11,9 +11,16 @@ public class OBJ_Chest extends Entity {
 
         super(gp);
         this.gp = gp;
-
+        collisionOn = true;
         name = "Chest";
         down1 = setup("/objects/Object/chest", gp.tileSize, gp.tileSize);
 
+    }
+
+    @Override
+    public void use(Entity entity) {
+        gp.stopMusic();
+        gp.playMusic(4);
+        gp.gameState = gp.gameEndState;
     }
 }

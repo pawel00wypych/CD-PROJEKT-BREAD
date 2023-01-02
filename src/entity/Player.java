@@ -49,9 +49,9 @@ public class Player extends Entity{
         life = maxLife;
         maxMana = 8;
         mana = maxMana;
-        level = 1;
-        strength = 1; //more strength -> more damage
-        dexterity = 1; //more dexterity -> more defence
+        level = 11;
+        strength = 11; //more strength -> more damage
+        dexterity = 11; //more dexterity -> more defence
         exp = 0;
         nextLevelExp = 6;
         coin = 0;
@@ -298,6 +298,13 @@ public class Player extends Entity{
                     case "Mana Crystal":
 
                         if(mana < maxMana) {
+                            gp.obj[gp.currentMap][i].use(this);
+                            gp.obj[gp.currentMap][i] = null;
+                        }
+                        break;
+                    case "Chest":
+
+                        if(hasKey >= 1) {
                             gp.obj[gp.currentMap][i].use(this);
                             gp.obj[gp.currentMap][i] = null;
                         }

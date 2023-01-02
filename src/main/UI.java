@@ -109,6 +109,9 @@ public class UI {
         if(gp.gameState == gp.transitionState){
             drawTransition();
         }
+        if(gp.gameState == gp.gameEndState){
+            drawGameEnd();
+        }
 //        if(gameFinished){
 //
 //            g2.setFont(arial_40);
@@ -167,6 +170,45 @@ public class UI {
 //            }
 //        }
 
+    }
+    public void drawGameEnd(){
+        g2.setColor(new Color(0,0,0,150));
+        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+
+        int x;
+        int y;
+        String text = "CONGRATULATIONS !!!";
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,60F));
+
+        //shadow
+        g2.setColor(Color.black);
+        x = getXforCenteredText(text);
+        y = gp.tileSize*4;
+        g2.drawString(text,x,y);
+        //white text
+        g2.setColor(Color.white);
+        g2.drawString(text,x-4,y-4);
+        y+=gp.tileSize*2;
+        text = "YOU FOUND A TREASURE";
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,60F));
+
+        //shadow
+        g2.setColor(Color.black);
+        x = getXforCenteredText(text);
+        g2.drawString(text,x,y);
+        //white text
+        g2.setColor(Color.white);
+        g2.drawString(text,x-4,y-4);
+
+        //back to the title screen
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,30F));
+        text = "Back to menu";
+        x = getXforCenteredText(text);
+        y+=gp.tileSize*2;
+        g2.drawString(text,x,y);
+        if(commandNum == 0){
+            g2.drawString(">",x-40,y);
+        }
     }
     public void drawTransition(){
         counter++;
