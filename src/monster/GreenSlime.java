@@ -9,7 +9,7 @@ import object.OBJ_Rock;
 
 import java.util.Random;
 
-public class GreenSlime extends Entity {
+public class GreenSlime extends Entity{
 
     GamePanel gp;
     public GreenSlime(GamePanel gp) {

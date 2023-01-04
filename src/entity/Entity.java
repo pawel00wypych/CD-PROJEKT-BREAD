@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
-public class Entity {
+public abstract class Entity {
 
     GamePanel gp;
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
