@@ -8,7 +8,7 @@ import object.OBJ_ManaCrystal;
 import object.OBJ_Rock;
 
 import java.util.Random;
-public class SandSlime extends Entity {
+public class SandSlime extends Monster {
 
 
     GamePanel gp;
@@ -32,6 +32,31 @@ public class SandSlime extends Entity {
         solidArea.y = 18;
         solidArea.width = 42;
         solidArea.height = 30;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+
+        getImage();
+    }
+
+    public SandSlime(GamePanel gp, SandSlime sandSlime) {
+
+        super(gp, sandSlime);
+        this.gp = gp;
+        type = sandSlime.type;
+        name = sandSlime.name;
+        defaultSpeed = sandSlime.defaultSpeed;
+        speed = defaultSpeed;
+        maxLife = sandSlime.maxLife;
+        life = maxLife;
+        attack = sandSlime.attack;
+        defence = sandSlime.defence;
+        exp = sandSlime.exp;
+        projectile = new OBJ_Rock(gp);
+
+        solidArea.x = sandSlime.solidArea.x;
+        solidArea.y = sandSlime.solidArea.y;
+        solidArea.width = sandSlime.solidArea.width;
+        solidArea.height = sandSlime.solidArea.height;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -82,5 +107,10 @@ public class SandSlime extends Entity {
         if (i >= 75 && i < 100) {
             dropItem(new OBJ_ManaCrystal(gp));
         }
+    }
+
+    @Override
+    public Monster clone() {
+        return new SandSlime(this.gp, this);
     }
 }

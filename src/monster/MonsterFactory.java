@@ -5,7 +5,7 @@ import main.GamePanel;
 
 public class MonsterFactory implements AbstractFactory<Entity, GamePanel, MonsterClass>{
     @Override
-    public Entity create(GamePanel gp,MonsterClass monsterClass) {
+    public Monster create(GamePanel gp,MonsterClass monsterClass) {
         switch (monsterClass){
             case Wolf -> {
                 return new Wolf(gp);

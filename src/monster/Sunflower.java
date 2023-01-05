@@ -9,7 +9,7 @@ import object.OBJ_Rock;
 
 import java.util.Random;
 
-public class Sunflower extends Entity {
+public class Sunflower extends Monster {
 
 
 
@@ -40,6 +40,30 @@ public class Sunflower extends Entity {
         getImage();
     }
 
+    public Sunflower(GamePanel gp, Sunflower sunflower) {
+
+        super(gp, sunflower);
+        this.gp = gp;
+        type = sunflower.type;
+        name = sunflower.name;
+        defaultSpeed = sunflower.defaultSpeed;
+        speed = defaultSpeed;
+        maxLife = sunflower.maxLife;
+        life = maxLife;
+        attack = sunflower.attack;
+        defence = sunflower.defence;
+        exp = sunflower.exp;
+        projectile = new OBJ_Rock(gp);
+
+        solidArea.x = sunflower.solidArea.x;
+        solidArea.y = sunflower.solidArea.y;
+        solidArea.width = sunflower.solidArea.width;
+        solidArea.height = sunflower.solidArea.height;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+
+        getImage();
+    }
     public void getImage() {
         up1 = setup("/monster/sunflower/sunflower_up_1", gp.tileSize, gp.tileSize);
         up2 = setup("/monster/sunflower/sunflower_up_2", gp.tileSize, gp.tileSize);
@@ -84,5 +108,10 @@ public class Sunflower extends Entity {
         if (i >= 90 && i < 100) {
             dropItem(new OBJ_ManaCrystal(gp));
         }
+    }
+
+    @Override
+    public Monster clone() {
+        return new Sunflower(this.gp, this);
     }
 }

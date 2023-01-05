@@ -2,6 +2,7 @@ package main;
 
 import entity.Entity;
 import entity.Player;
+import monster.Monster;
 import tile.TileManager;
 
 import javax.swing.*;
@@ -59,7 +60,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     // ENTITY AND OBJECT
     public Player player = new Player(this, keyH);
-    public Entity[][] monster = new Entity[maxMap][40];
+    public Monster[][] monster = new Monster[maxMap][40];
 
     //you can display 50 objects at screen
     public Entity[][] obj = new Entity[maxMap][30];

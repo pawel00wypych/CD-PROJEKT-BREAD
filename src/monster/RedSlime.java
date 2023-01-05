@@ -9,7 +9,7 @@ import object.OBJ_Rock;
 
 import java.util.Random;
 
-public class RedSlime extends Entity {
+public class RedSlime extends Monster {
 
 
     GamePanel gp;
@@ -39,6 +39,30 @@ public class RedSlime extends Entity {
         getImage();
     }
 
+    public RedSlime(GamePanel gp, RedSlime redSlime) {
+
+        super(gp, redSlime);
+        this.gp = gp;
+        type = redSlime.type;
+        name = redSlime.name;
+        defaultSpeed = redSlime.defaultSpeed;
+        speed = defaultSpeed;
+        maxLife = redSlime.maxLife;
+        life = maxLife;
+        attack = redSlime.attack;
+        defence = redSlime.defence;
+        exp = redSlime.exp;
+        projectile = new OBJ_Rock(gp);
+
+        solidArea.x = redSlime.solidArea.x;
+        solidArea.y = redSlime.solidArea.y;
+        solidArea.width = redSlime.solidArea.width;
+        solidArea.height = redSlime.solidArea.height;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+
+        getImage();
+    }
     public void getImage() {
         up1 = setup("/monster/RedSlime/RedSlime_up_1", gp.tileSize, gp.tileSize);
         up2 = setup("/monster/RedSlime/RedSlime_up_2", gp.tileSize, gp.tileSize);
@@ -83,5 +107,10 @@ public class RedSlime extends Entity {
         if (i >= 75 && i < 100) {
             dropItem(new OBJ_ManaCrystal(gp));
         }
+    }
+
+    @Override
+    public Monster clone() {
+        return new RedSlime(this.gp, this);
     }
 }

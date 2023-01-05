@@ -6,7 +6,7 @@ import object.*;
 
 import java.util.Random;
 
-public class Wolf extends Entity {
+public class Wolf extends Monster {
 
     GamePanel gp;
 
@@ -28,6 +28,30 @@ public class Wolf extends Entity {
         solidArea.y = 14;
         solidArea.width = 30;
         solidArea.height = 75;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+
+        getImage();
+    }
+
+    public Wolf(GamePanel gp, Wolf wolf) {
+
+        super(gp, wolf);
+        this.gp = gp;
+        type = wolf.type;
+        name = wolf.name;
+        defaultSpeed = wolf.defaultSpeed;
+        speed = defaultSpeed;
+        maxLife = wolf.maxLife;
+        life = maxLife;
+        attack = wolf.attack;
+        defence = wolf.defence;
+        exp = wolf.exp;
+
+        solidArea.x = wolf.solidArea.x;
+        solidArea.y = wolf.solidArea.y;
+        solidArea.width = wolf.solidArea.width;
+        solidArea.height = wolf.solidArea.height;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -96,5 +120,10 @@ public class Wolf extends Entity {
     public void checkDrop() {
 
         dropItem(new OBJ_Key(gp));
+    }
+
+    @Override
+    public Monster clone() {
+        return new Wolf(this.gp, this);
     }
 }

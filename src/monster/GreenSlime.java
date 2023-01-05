@@ -9,7 +9,7 @@ import object.OBJ_Rock;
 
 import java.util.Random;
 
-public class GreenSlime extends Entity{
+public class GreenSlime extends Monster{
 
     GamePanel gp;
     public GreenSlime(GamePanel gp) {
@@ -31,6 +31,31 @@ public class GreenSlime extends Entity{
         solidArea.y = 18;
         solidArea.width = 42;
         solidArea.height = 30;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+
+        getImage();
+    }
+
+    public GreenSlime(GamePanel gp, GreenSlime greenSlime) {
+
+        super(gp, greenSlime);
+        this.gp = gp;
+        type = greenSlime.type;
+        name = greenSlime.name;
+        defaultSpeed = greenSlime.defaultSpeed;
+        speed = defaultSpeed;
+        maxLife = greenSlime.maxLife;
+        life = maxLife;
+        attack = greenSlime.attack;
+        defence = greenSlime.defence;
+        exp = greenSlime.exp;
+        projectile = new OBJ_Rock(gp);
+
+        solidArea.x = greenSlime.solidArea.x;
+        solidArea.y = greenSlime.solidArea.y;
+        solidArea.width = greenSlime.solidArea.width;
+        solidArea.height = greenSlime.solidArea.height;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -79,5 +104,10 @@ public class GreenSlime extends Entity{
         if(i >= 90 && i < 100) {
             dropItem(new OBJ_ManaCrystal(gp));
         }
+    }
+
+    @Override
+    public GreenSlime clone() {
+        return new GreenSlime(this.gp, this);
     }
 }

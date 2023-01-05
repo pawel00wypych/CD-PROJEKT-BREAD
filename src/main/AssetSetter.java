@@ -114,22 +114,22 @@ public class AssetSetter {
         gp.monster[mapNum][i].worldY = gp.tileSize * 13;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.GreenSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 25;
         gp.monster[mapNum][i].worldY = gp.tileSize * 6;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.GreenSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 27;
         gp.monster[mapNum][i].worldY = gp.tileSize * 6;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.GreenSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 30;
         gp.monster[mapNum][i].worldY = gp.tileSize * 7;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.GreenSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 36;
         gp.monster[mapNum][i].worldY = gp.tileSize * 11;
 
@@ -139,28 +139,28 @@ public class AssetSetter {
         gp.monster[mapNum][i].worldY = gp.tileSize * 7;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.RedSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 40;
         gp.monster[mapNum][i].worldY = gp.tileSize * 44;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.RedSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 8;
         gp.monster[mapNum][i].worldY = gp.tileSize * 10;
 
         i++;
 
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.RedSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 24;
         gp.monster[mapNum][i].worldY = gp.tileSize * 34;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.RedSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 24;
         gp.monster[mapNum][i].worldY = gp.tileSize * 35;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.RedSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 19;
         gp.monster[mapNum][i].worldY = gp.tileSize * 19;
 
@@ -170,32 +170,32 @@ public class AssetSetter {
         gp.monster[mapNum][i].worldY = gp.tileSize * 6;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.Sunflower);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 28;
         gp.monster[mapNum][i].worldY = gp.tileSize * 33;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.Sunflower);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 28;
         gp.monster[mapNum][i].worldY = gp.tileSize * 35;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.Sunflower);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 32;
         gp.monster[mapNum][i].worldY = gp.tileSize * 32;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.Sunflower);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 18;
         gp.monster[mapNum][i].worldY = gp.tileSize * 17;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.Sunflower);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 33;
         gp.monster[mapNum][i].worldY = gp.tileSize * 41;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.Sunflower);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 40;
         gp.monster[mapNum][i].worldY = gp.tileSize * 32;
 
@@ -205,7 +205,7 @@ public class AssetSetter {
         gp.monster[mapNum][i].worldY = gp.tileSize * 30;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.Wolf);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 12;
         gp.monster[mapNum][i].worldY = gp.tileSize * 7;
 
@@ -216,17 +216,17 @@ public class AssetSetter {
         gp.monster[mapNum][i].worldY = gp.tileSize * 28;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.RedSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 17;
         gp.monster[mapNum][i].worldY = gp.tileSize * 17;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.RedSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 27;
         gp.monster[mapNum][i].worldY = gp.tileSize * 17;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.RedSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 27;
         gp.monster[mapNum][i].worldY = gp.tileSize * 28;
 
@@ -236,32 +236,32 @@ public class AssetSetter {
         gp.monster[mapNum][i].worldY = gp.tileSize * 30;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.SandSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 15;
         gp.monster[mapNum][i].worldY = gp.tileSize * 24;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.SandSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 15;
         gp.monster[mapNum][i].worldY = gp.tileSize * 15;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.SandSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 21;
         gp.monster[mapNum][i].worldY = gp.tileSize * 15;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.SandSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 25;
         gp.monster[mapNum][i].worldY = gp.tileSize * 11;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.SandSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 21;
         gp.monster[mapNum][i].worldY = gp.tileSize * 27;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.SandSlime);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 27;
         gp.monster[mapNum][i].worldY = gp.tileSize * 31;
 
@@ -271,7 +271,7 @@ public class AssetSetter {
         gp.monster[mapNum][i].worldY = gp.tileSize * 36;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.Wolf);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 28;
         gp.monster[mapNum][i].worldY = gp.tileSize * 37;
 
@@ -281,12 +281,12 @@ public class AssetSetter {
         gp.monster[mapNum][i].worldY = gp.tileSize * 8;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.Sunflower);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 22;
         gp.monster[mapNum][i].worldY = gp.tileSize * 8;
 
         i++;
-        gp.monster[mapNum][i] = factory.create(gp,MonsterClass.Sunflower);
+        gp.monster[mapNum][i] = gp.monster[mapNum][i-1].clone();
         gp.monster[mapNum][i].worldX = gp.tileSize * 24;
         gp.monster[mapNum][i].worldY = gp.tileSize * 8;
     }
