@@ -21,6 +21,7 @@ public class OBJ_Chest extends Entity {
     public void use(Entity entity) {
         gp.stopMusic();
         gp.playMusic(4);
+        //gp.gamestate = GameEndState;
         gp.gameState = gp.gameEndState;
     }
 }

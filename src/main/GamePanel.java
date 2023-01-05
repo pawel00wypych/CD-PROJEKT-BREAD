@@ -3,6 +3,7 @@ package main;
 import entity.Entity;
 import entity.Player;
 import monster.Monster;
+import state.*;
 import tile.TileManager;
 
 import javax.swing.*;
@@ -32,7 +33,7 @@ public class GamePanel extends JPanel implements Runnable{
     int screenWidth2 = screenWidth;
     int screenHeight2 = screenHeight;
     BufferedImage tempScreen;
-    Graphics2D g2;
+    public Graphics2D g2;
     public boolean fullScreenOn = false;
 
 
@@ -41,12 +42,12 @@ public class GamePanel extends JPanel implements Runnable{
 
 
     // SYSTEM
-    TileManager tileM = new TileManager(this);
+    public TileManager tileM = new TileManager(this);
     public KeyHandler keyH = new KeyHandler(this);
     Thread gameThread;
 
-    Sound music = new Sound();
-    Sound soundEffect = new Sound();
+    public Sound music = new Sound();
+    public Sound soundEffect = new Sound();
 
     public CollisionChecker colChecker = new CollisionChecker(this);
 
@@ -71,16 +72,27 @@ public class GamePanel extends JPanel implements Runnable{
 
 
     // GAME STATE
-    public int gameState;
-    public final int titleState = 0;
-    public final int playState = 1;
-    public final int pauseState = 2;
-    public final int characterState = 4;
-    public final int optionsState = 6;
-    public final int gameOverState = 7;
-    public int levelUpState = 5;
-    public final int transitionState = 8;
-    public final int gameEndState = 9;
+    public State gameState;
+    public final State titleState;
+    public final State playState;
+    public final State pauseState;
+    public final State characterState;
+    public final State optionsState;
+    public final State gameOverState;
+    public final State levelUpState;
+    public final State transitionState;
+    public final State gameEndState;
+    //public int gameState;
+//    public final int titleState = 0;
+//    public final int playState = 1;
+//    public final int pauseState = 2;
+//    public final int characterState = 4;
+//    public final int optionsState = 6;
+//    public final int gameOverState = 7;
+//    public int levelUpState = 5;
+//    public final int transitionState = 8;
+//
+//    public final int gameEndState = 9;
 
     public GamePanel() {
 
@@ -89,6 +101,18 @@ public class GamePanel extends JPanel implements Runnable{
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
+
+        gameState = new TitleState(this);
+        titleState = new TitleState(this);
+        playState = new PlayState(this);
+        characterState = new CharacterState(this);
+        optionsState = new OptionsState(this);
+        gameOverState = new GameOverState(this);
+        levelUpState = new LevelUpState(this);
+        transitionState = new TransisionState(this);
+        gameEndState = new GameEndState(this);
+        pauseState = new PauseState(this);
+
     }
 
     public void setupGame() {
@@ -180,6 +204,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void update() {
+
 
         if(gameState == playState) {
             player.update();

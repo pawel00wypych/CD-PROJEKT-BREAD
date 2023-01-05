@@ -1,5 +1,7 @@
 package main;
 
+import state.TransisionState;
+
 public class EventHandler {
 
     GamePanel gp;
@@ -108,6 +110,7 @@ public class EventHandler {
         //gp.aSetter.setMonster();
     }
     public void teleport(int map, int col, int row){
+        //gp.gamestate = TransisionState;
         gp.gameState = gp.transitionState;
         tempMap = map;
         tempCol = col;
