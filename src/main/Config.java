@@ -4,28 +4,30 @@ import java.io.*;
 
 public class Config {
 
-    GamePanel gp;
+    ConfigMemento memento;
 
-    public Config(GamePanel gp) {
-        this.gp = gp;
+    public Config(ConfigMemento memento) {
+        this.memento = memento;
     }
-    public void saveConfig(){
+
+
+    public void saveConfig(ConfigMemento memento){
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("config.txt"));
 
             //full screen
-            if(gp.fullScreenOn)
+            if(memento.fullScreenOn)
                 bw.write("On");
             else
                 bw.write("Off");
             bw.newLine();
 
             //music volume
-            bw.write(String.valueOf(gp.music.volumeScale));
+            bw.write(String.valueOf(memento.musicVolume));
             bw.newLine();
 
             //se volume
-            bw.write(String.valueOf(gp.soundEffect.volumeScale));
+            bw.write(String.valueOf(memento.effectVolume));
             bw.newLine();
             bw.close();
 
@@ -33,33 +35,40 @@ public class Config {
             e.printStackTrace();
         }
     }
-    public void loadConfig(){
+
+    public ConfigMemento loadConfig(){
         try {
+            boolean fullScreenOn;
+            int musicVolume;
+            int effectVolume;
             BufferedReader br = new BufferedReader(new FileReader("config.txt"));
 
             String s = br.readLine();
 
             //full screen
             if(s.equals("On")){
-                gp.fullScreenOn = true;
-            }else  if(s.equals("Off")){
-                gp.fullScreenOn = false;
+                fullScreenOn = true;
+            }else{
+                fullScreenOn = false;
             }
 
             //music volume
             s = br.readLine();
-            gp.music.volumeScale = Integer.parseInt(s);
+            musicVolume = Integer.parseInt(s);
 
             //SE volume
             s = br.readLine();
-            gp.soundEffect.volumeScale = Integer.parseInt(s);
+            effectVolume = Integer.parseInt(s);
 
             br.close();
+            return new ConfigMemento(fullScreenOn,musicVolume,effectVolume);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            return null;
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
 
     }

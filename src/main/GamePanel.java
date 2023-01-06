@@ -57,7 +57,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public EventHandler eHandler = new EventHandler(this);
 
-    public Config config = new Config(this);
+    public Config config = new Config( new ConfigMemento(fullScreenOn, music.volumeScale, soundEffect.volumeScale));
 
     // ENTITY AND OBJECT
     public Player player = new Player(this, keyH);

@@ -15,9 +15,13 @@ public class Main {
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
 
-        gamePanel.config.loadConfig();
-        if(gamePanel.fullScreenOn){
+        ConfigMemento memento = gamePanel.config.loadConfig();
+        gamePanel.music.volumeScale = memento.musicVolume;
+        gamePanel.soundEffect.volumeScale = memento.effectVolume;
+        System.out.println(memento.fullScreenOn);
+        if(memento.fullScreenOn){
             window.setUndecorated(true);
+            gamePanel.fullScreenOn = true;
         }
 
         window.pack();
