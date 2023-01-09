@@ -25,8 +25,6 @@ public class Sound {
         soundURL[6] = getClass().getResource("/sound/Song1.wav");
         soundURL[7] = getClass().getResource("/sound/hitmonster.wav");
         soundURL[8] = getClass().getResource("/sound/receivedamage.wav");
-        //THAT SOUND DONT WORK IDK WHY IT IS BROKEN ADDED TEMPORTARY ANOTHER
-        //soundURL[9] = getClass().getResource("/sound/swingsound.wav");
         soundURL[9] = getClass().getResource("/sound/parry.wav");
         soundURL[10] = getClass().getResource("/sound/levelup.wav");
         soundURL[10] = getClass().getResource("/sound/burning.wav");

@@ -5,6 +5,7 @@ import entity.Player;
 import monster.Monster;
 import state.*;
 import tile.TileManager;
+import ui.UI;
 
 import javax.swing.*;
 import java.awt.*;

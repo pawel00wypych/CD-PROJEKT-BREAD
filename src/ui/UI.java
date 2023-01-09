@@ -1,6 +1,8 @@
-package main;
+package ui;
 
 import entity.Entity;
+import main.ConfigMemento;
+import main.GamePanel;
 import object.OBJ_Heart;
 import object.OBJ_Key;
 import object.OBJ_ManaCrystal;
@@ -19,16 +21,15 @@ public class UI {
     Font retroGaming;
 
     BufferedImage heart_full, heart_half, heart_blank, crystal_full, crystal_blank, keyImage;
-    public boolean messageOn = false;
-    public String message = "";
-    int messageCounter = 0;
-    public boolean gameFinished = false;
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.0");
     public int commandNum = 0;
     public int titleScreenState = 0; //0: first screen, 1: second screen
     public int subState = 0;
     int counter = 0;
+
+    PlayerResourcesDecorator playerResources;
+
 
     public UI(GamePanel gp) {
 
@@ -57,12 +58,8 @@ public class UI {
         crystal_full = crystal.image;
         crystal_blank = crystal.image2;
 
-    }
+        playerResources = new PlayerKeysDecorator(new PlayerManaDecorator(new PlayerLife(this), this), this);
 
-    public void showMessage(String text) {
-
-        message = text;
-        messageOn = true;
     }
 
     public void draw(Graphics2D g2) {
@@ -79,15 +76,12 @@ public class UI {
         // PLAY STATE
         if(gp.gameState == gp.playState) {
 
-            drawPlayerLife();
-            drawPlayerMana();
-            drawPlayerKeys();
+            playerResources.drawPlayerResources();
         }
         // PAUSE STATE
         if (gp.gameState == gp.pauseState) {
-            drawPlayerLife();
-            drawPlayerMana();
-            drawPlayerKeys();
+
+            playerResources.drawPlayerResources();
             drawPauseScreen();
         }
         // CHARACTER STATE
@@ -160,7 +154,6 @@ public class UI {
 
         if(counter == 50){
             counter = 0;
-            //gp.gamestate = PlayState;
             gp.gameState = gp.playState;
             gp.currentMap = gp.eHandler.tempMap;
             gp.player.worldX = gp.tileSize * gp.eHandler.tempCol;
@@ -169,7 +162,6 @@ public class UI {
             gp.eHandler.previousEventY = gp.player.worldY;
         }
     }
-
     public void drawGameOverScreen(){
         g2.setColor(new Color(0,0,0,150));
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
@@ -421,76 +413,6 @@ public class UI {
             }
         }
     }
-
-    public void drawPlayerKeys() {
-        int x = gp.tileSize/2 - 5;
-        int y = gp.tileSize * 3 - 20;
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 28F));
-        //g2.setColor(new Color(255, 255, 255));
-        g2.drawImage(keyImage, x, y, null);
-        x += gp.tileSize - 10;
-        y += 35;
-        g2.drawString(Integer.toString(gp.player.hasKey),x,y);
-
-    }
-
-    public void drawPlayerLife() {
-
-        int x = gp.tileSize/2;
-        int y = gp.tileSize/2;
-        int i = 0;
-
-        // DRAW MAX LIFE
-        while(i < gp.player.maxLife/2) {
-            g2.drawImage(heart_blank, x, y, null);
-            i++;
-            x += gp.tileSize;
-        }
-
-        x = gp.tileSize/2;
-        i = 0;
-
-        // DRAW CURRENT LIFE
-        while(i < gp.player.life) {
-
-            g2.drawImage(heart_half, x, y, null);
-            i++;
-
-            if(i < gp.player.life) {
-                g2.drawImage(heart_full, x, y, null);
-            }
-            i++;
-            x += gp.tileSize;
-        }
-
-    }
-
-    public void drawPlayerMana() {
-
-        int x = gp.tileSize/2 - 5;
-        int y = gp.tileSize*2 - 20;
-        int i = 0;
-
-        // DRAW MAX MANA
-        while(i < gp.player.maxMana) {
-            g2.drawImage(crystal_blank, x, y, null);
-            i++;
-            x += 35;
-        }
-
-        x = gp.tileSize/2 - 5;
-        y = gp.tileSize*2 -20;
-        i = 0;
-
-        // DRAW CURRENT MANA
-        while(i < gp.player.mana) {
-
-            g2.drawImage(crystal_full, x, y, null);
-            i++;
-            x += 35;
-        }
-    }
-
     public void drawTitleScreen() {
 
         if(titleScreenState == 0) {
@@ -586,7 +508,6 @@ public class UI {
         }
 
     }
-
     public void drawPauseScreen() {
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 40F));
         String text = "PAUSED";
@@ -717,7 +638,6 @@ public class UI {
 
         return tailX - textLength;
     }
-
     public void drawLevelUpState() {
 
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 60F));

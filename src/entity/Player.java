@@ -206,7 +206,6 @@ public class Player extends Entity{
             mana = maxMana;
 
         if(life<= 0 ){
-            //gp.gamestate = GameOverState;
             gp.gameState = gp.gameOverState;
             gp.ui.commandNum = -1;
             gp.stopMusic();
@@ -442,7 +441,6 @@ public class Player extends Entity{
 
 
             gp.playSE(10);
-            //gp.gamestate = LevelUpState;
             gp.gameState = gp.levelUpState;
         }
     }
