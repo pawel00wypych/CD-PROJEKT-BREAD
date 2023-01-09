@@ -2,10 +2,18 @@ package main;
 
 import state.TransisionState;
 
-public class EventHandler {
+public class EventHandler implements EventHandlerMediator {
 
-    GamePanel gp;
-    EventRect[][][] eventRect;
+    private GamePanel gp;
+    private EventRect[][][] eventRect;
+
+    public void registerGamePanel(GamePanel gp) {
+        this.gp = gp;
+    }
+
+    public void registerEventRect(EventRect[][][] eventRect) {
+        this.eventRect = eventRect;
+    }
 
     public int previousEventX, previousEventY;
     boolean canTouchEvent = true;
