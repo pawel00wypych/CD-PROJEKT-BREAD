@@ -265,7 +265,7 @@ public abstract class Entity {
                 changeAlpha(g2,0.4f);
             }
 
-            if(dying){
+            if(dying && type==2){
                 dyingAnimation(g2);
             }
             g2.drawImage(image, screenX, screenY, null);

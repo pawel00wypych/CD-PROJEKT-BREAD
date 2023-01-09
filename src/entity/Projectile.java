@@ -29,9 +29,10 @@ public class Projectile extends Entity{
                 gp.player.damageMonster(monsterIndex, gp.monster[gp.currentMap][monsterIndex].defence + this.attack);
                 generateParticle(user.projectile, gp.monster[gp.currentMap][monsterIndex]);
                 alive = false;
+                collisionOn = false;
             }
         }
-        if(user != gp.player) {
+        else {
             boolean contactPlayer = gp.colChecker.checkPlayer(this);
 
             if(!gp.player.invincible && contactPlayer) {
