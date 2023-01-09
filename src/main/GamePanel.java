@@ -15,6 +15,9 @@ import java.util.Comparator;
 
 public class GamePanel extends JPanel implements Runnable{
 
+    //SINGLETON INSTANCE
+    private static GamePanel instance;
+
     //Screen Settings
     final int originalTileSize = 16; //16x16
     final int scale = 3;
@@ -95,7 +98,8 @@ public class GamePanel extends JPanel implements Runnable{
 //
 //    public final int gameEndState = 9;
 
-    public GamePanel() {
+
+    GamePanel() {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
@@ -114,6 +118,14 @@ public class GamePanel extends JPanel implements Runnable{
         gameEndState = new GameEndState(this);
         pauseState = new PauseState(this);
 
+    }
+
+    //SINGLETON INSTANCE GETTER
+    public static GamePanel getInstance() {
+        if (instance == null) {
+            instance = new GamePanel();
+        }
+        return instance;
     }
 
     public void setupGame() {
