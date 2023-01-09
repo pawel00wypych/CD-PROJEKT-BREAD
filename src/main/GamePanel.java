@@ -99,7 +99,7 @@ public class GamePanel extends JPanel implements Runnable{
 //    public final int gameEndState = 9;
 
 
-    GamePanel() {
+    private GamePanel() {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
@@ -121,7 +121,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     //SINGLETON INSTANCE GETTER
-    public static GamePanel getInstance() {
+    static GamePanel getInstance() {
         if (instance == null) {
             instance = new GamePanel();
         }

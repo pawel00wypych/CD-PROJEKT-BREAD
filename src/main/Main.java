@@ -12,7 +12,7 @@ public class Main {
         window.setResizable(false);
         window.setTitle("2D Adventure");
 
-        GamePanel gamePanel = new GamePanel();
+        GamePanel gamePanel = GamePanel.getInstance();
         window.add(gamePanel);
 
         ConfigMemento memento = gamePanel.config.loadConfig();
