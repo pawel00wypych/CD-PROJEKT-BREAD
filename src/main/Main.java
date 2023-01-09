@@ -31,5 +31,8 @@ public class Main {
 
         gamePanel.setupGame();
         gamePanel.startGameThread();
+
+        //GARBAGE COLLECTION REQUEST
+        System.gc();
     }
 }
