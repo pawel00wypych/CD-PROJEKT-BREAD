@@ -7,20 +7,14 @@ public class EventHandler implements EventHandlerMediator {
     private GamePanel gp;
     private EventRect[][][] eventRect;
 
-    public void registerGamePanel(GamePanel gp) {
-        this.gp = gp;
-    }
-
-    public void registerEventRect(EventRect[][][] eventRect) {
-        this.eventRect = eventRect;
-    }
-
     public int previousEventX, previousEventY;
     boolean canTouchEvent = true;
     public int tempMap, tempCol,tempRow;
     public EventHandler(GamePanel gp) {
-        this.gp = gp;
-        eventRect = new EventRect[gp.maxMap][gp.maxWorldCol][gp.maxWorldRow];
+
+        registerGamePanel(gp);
+        registerEventRect(new EventRect[gp.maxMap][gp.maxWorldCol][gp.maxWorldRow]);
+
         int map = 0;
         int col = 0;
         int row = 0;
@@ -42,6 +36,14 @@ public class EventHandler implements EventHandlerMediator {
                 }
             }
         }
+    }
+
+    public void registerGamePanel(GamePanel gp) {
+        this.gp = gp;
+    }
+
+    public void registerEventRect(EventRect[][][] eventRect) {
+        this.eventRect = eventRect;
     }
 
     public void checkEvent(){
