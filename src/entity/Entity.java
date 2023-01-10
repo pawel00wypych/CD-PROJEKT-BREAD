@@ -32,6 +32,7 @@ public abstract class Entity {
     public boolean dying = false;
     boolean hpBarOn = false;
     public boolean knockBack = false;
+    public boolean jumpingState = true;
 
     // COUNTER
     public int spriteCounter = 0;
@@ -41,6 +42,7 @@ public abstract class Entity {
     int hpBarCounter = 0;
     int knockBackCounter = 0;
     public int shotAvailableCounter = 0;
+    public int pickupFloatCounter = 0;
 
 
     // CHARACTER ATTRIBUTES
@@ -307,7 +309,24 @@ public abstract class Entity {
             if(dying && type==2){
                 dyingAnimation(g2);
             }
-            g2.drawImage(image, screenX, screenY, null);
+            if(type == type_pickUpOnly){
+                if(pickupFloatCounter <=40 && pickupFloatCounter >=0 ){
+
+                    g2.drawImage(image, screenX, screenY+((int)pickupFloatCounter/4), null);
+                    if(jumpingState)
+                        pickupFloatCounter ++;
+                    else
+                        pickupFloatCounter--;
+                }else {
+                    g2.drawImage(image, screenX, screenY+((int)pickupFloatCounter/4), null);
+                    jumpingState = !jumpingState;
+                    if(jumpingState)
+                        pickupFloatCounter ++;
+                    else
+                        pickupFloatCounter--;
+                }
+            }else
+                g2.drawImage(image, screenX, screenY, null);
 
             changeAlpha(g2,1f);
 

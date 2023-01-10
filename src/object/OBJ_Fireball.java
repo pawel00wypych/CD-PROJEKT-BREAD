@@ -13,7 +13,7 @@ public class OBJ_Fireball extends Projectile {
         super(gp);
         this.gp = gp;
 
-        solidArea = new Rectangle(8,8,32,32);
+        solidArea = new Rectangle(12,12,24,24);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         type = type_projectile;

@@ -10,6 +10,8 @@ public class OBJ_Boots extends Entity {
 
          super(gp);
          this.gp = gp;
+         type = type_pickUpOnly;
+
          name = "Boots";
          down1 = setup("/objects/Object/boots", gp.tileSize, gp.tileSize);
 

@@ -11,6 +11,7 @@ public class OBJ_Heart extends Entity {
 
         super(gp);
         this.gp = gp;
+        type = type_pickUpOnly;
 
         value = 2;
         name = "Heart";
