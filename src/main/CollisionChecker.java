@@ -24,44 +24,67 @@ public class CollisionChecker {
 
         int tileNum1, tileNum2;
 
-        switch (entity.direction) {
-            case "up":
-                entityTopRow = (entityTopWorldY - entity.speed)/gp.tileSize;
-                tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityTopRow];
-                tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityTopRow];
-                checkTileDamage(entity, tileNum1, tileNum2);
-                if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
-                    entity.collisionOn = true;
-                }
-                break;
-            case "down":
-                entityBottomRow = (entityBottomWorldY + entity.speed)/gp.tileSize;
-                tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityBottomRow];
-                tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityBottomRow];
-                checkTileDamage(entity, tileNum1, tileNum2);
-                if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
-                    entity.collisionOn = true;
-                }
-                break;
-            case "left":
-                entityLeftCol = (entityLeftWorldX - entity.speed)/gp.tileSize;
-                tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityTopRow];
-                tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityBottomRow];
-                checkTileDamage(entity, tileNum1, tileNum2);
-                if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
-                    entity.collisionOn = true;
-                }
-                break;
-            case "right":
-                entityRightCol = (entityRightWorldX + entity.speed)/gp.tileSize;
-                tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityTopRow];
-                tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityBottomRow];
-                checkTileDamage(entity, tileNum1, tileNum2);
-                if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
-                    entity.collisionOn = true;
-                }
-                break;
+        //prevent out of index on max map size
+        if(entityLeftCol>= gp.maxWorldCol-1 || entityLeftCol<=0 || entityRightCol>=gp.maxWorldCol-1 || entityRightCol<=0 || entityTopRow>=gp.maxWorldRow-1 || entityTopRow<=0 || entityBottomRow>=gp.maxWorldRow-1 || entityBottomRow<=0){
+            entity.collisionOn = true;
+            return;
+        }else {
+
+            switch (entity.direction) {
+                case "up":
+                    entityTopRow = (entityTopWorldY - entity.speed) / gp.tileSize;
+                    tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityTopRow];
+                    tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityTopRow];
+                    checkTileDamage(entity, tileNum1, tileNum2);
+                    if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
+                        entity.collisionOn = true;
+                        //projectile fly above water
+                        if ((entity.type == entity.type_projectile && tileNum1 >= 17 && tileNum1 <= 30) || (entity.type == entity.type_projectile && tileNum2 >= 17 && tileNum2 <= 30)) {
+                            entity.collisionOn = false;
+                        }
+                    }
+
+                    break;
+                case "down":
+                    entityBottomRow = (entityBottomWorldY + entity.speed) / gp.tileSize;
+                    tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityBottomRow];
+                    tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityBottomRow];
+                    checkTileDamage(entity, tileNum1, tileNum2);
+                    if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
+                        entity.collisionOn = true;
+                        if ((entity.type == entity.type_projectile && tileNum1 >= 17 && tileNum1 <= 30) || (entity.type == entity.type_projectile && tileNum2 >= 17 && tileNum2 <= 30)) {
+                            entity.collisionOn = false;
+                        }
+                    }
+                    break;
+                case "left":
+                    entityLeftCol = (entityLeftWorldX - entity.speed) / gp.tileSize;
+                    tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityTopRow];
+                    tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityBottomRow];
+                    checkTileDamage(entity, tileNum1, tileNum2);
+                    if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
+                        entity.collisionOn = true;
+                        if ((entity.type == entity.type_projectile && tileNum1 >= 17 && tileNum1 <= 30) || (entity.type == entity.type_projectile && tileNum2 >= 17 && tileNum2 <= 30)) {
+                            entity.collisionOn = false;
+                        }
+                    }
+                    break;
+                case "right":
+                    entityRightCol = (entityRightWorldX + entity.speed) / gp.tileSize;
+                    tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityTopRow];
+                    tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityBottomRow];
+                    checkTileDamage(entity, tileNum1, tileNum2);
+                    if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
+                        entity.collisionOn = true;
+                        if ((entity.type == entity.type_projectile && tileNum1 >= 17 && tileNum1 <= 30) || (entity.type == entity.type_projectile && tileNum2 >= 17 && tileNum2 <= 30)) {
+                            entity.collisionOn = false;
+                        }
+                    }
+                    break;
+            }
         }
+
+
     }
 
     public void checkTileDamage(Entity entity, int tileNum1, int tileNum2) {
