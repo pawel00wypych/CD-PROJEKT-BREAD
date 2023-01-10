@@ -70,6 +70,8 @@ public class GamePanel extends JPanel implements Runnable{
     //you can display 50 objects at screen
     public Entity[][] obj = new Entity[maxMap][30];
     public ArrayList<Entity> projectileList = new ArrayList<>();
+    public boolean projectileDamage = false;
+
     public ArrayList<Entity> particleList = new ArrayList<>();
 
     ArrayList<Entity> entityList = new ArrayList<>();
@@ -86,17 +88,6 @@ public class GamePanel extends JPanel implements Runnable{
     public final State levelUpState;
     public final State transitionState;
     public final State gameEndState;
-    //public int gameState;
-//    public final int titleState = 0;
-//    public final int playState = 1;
-//    public final int pauseState = 2;
-//    public final int characterState = 4;
-//    public final int optionsState = 6;
-//    public final int gameOverState = 7;
-//    public int levelUpState = 5;
-//    public final int transitionState = 8;
-//
-//    public final int gameEndState = 9;
 
 
     private GamePanel() {

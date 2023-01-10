@@ -126,22 +126,58 @@ public abstract class Entity {
             gp.colChecker.checkEntity(this,gp.monster);
 
             if(collisionOn) {
+                if(gp.projectileDamage) {
 
+                    direction = getOppositeDirection(gp.player.projectileHitDirection);
+                    gp.projectileDamage = false;
+                } else {
+
+                    direction = getOppositeDirection(gp.player.lastMeleeHitDirection);
+                }
                 knockBackCounter = 0;
                 knockBack = false;
                 speed = defaultSpeed;
-            } else {
 
-                switch (gp.player.direction) {
-                    case "up": worldY -= speed; break;
-                    case "down": worldY += speed; break;
-                    case "left": worldX -= speed; break;
-                    case "right": worldX += speed; break;
+            } else {
+                if(gp.projectileDamage) {
+
+                    switch (gp.player.projectileHitDirection) {
+                        case "up": worldY -= speed; break;
+                        case "down": worldY += speed; break;
+                        case "left": worldX -= speed; break;
+                        case "right": worldX += speed; break;
+                    }
+
+                } else {
+
+                    switch (gp.player.lastMeleeHitDirection) {
+                        case "up":
+                            worldY -= speed;
+                            break;
+                        case "down":
+                            worldY += speed;
+                            break;
+                        case "left":
+                            worldX -= speed;
+                            break;
+                        case "right":
+                            worldX += speed;
+                            break;
+                    }
                 }
             }
 
             knockBackCounter++;
-            if(knockBackCounter >= 5) {
+            if(knockBackCounter >= 10) {
+
+                if(gp.projectileDamage) {
+
+                    direction = getOppositeDirection(gp.player.projectileHitDirection);
+                    gp.projectileDamage = false;
+                } else {
+
+                    direction = getOppositeDirection(gp.player.lastMeleeHitDirection);
+                }
 
                 knockBackCounter = 0;
                 knockBack = false;

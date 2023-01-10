@@ -91,7 +91,8 @@ public class Sunflower extends Monster {
     public void damageReaction() {
 
         actionLockCounter = 0;
-        direction = getOppositeDirection(gp.player.direction);
+        direction = gp.player.lastMeleeHitDirection;
+       // direction = getOppositeDirection(gp.player.direction);
     }
 
     public void checkDrop() {

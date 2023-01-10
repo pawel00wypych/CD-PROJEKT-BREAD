@@ -16,6 +16,9 @@ public class Player extends Entity{
     public final int screenY;
     public int hasKey = 0;
 
+    String projectileHitDirection;
+    public String lastMeleeHitDirection;
+
     public Player(GamePanel gp, KeyHandler keyH) {
 
         super(gp);
@@ -44,13 +47,13 @@ public class Player extends Entity{
         direction = "down";
 
         // PLAYER STATUS
-        maxLife = 6;
+        maxLife = 14;
         type = 0;
         life = maxLife;
-        maxMana = 8;
+        maxMana = 18;
         mana = maxMana;
-        level = 11;
-        strength = 11; //more strength -> more damage
+        level = 1;
+        strength = 0; //more strength -> more damage
         dexterity = 11; //more dexterity -> more defence
         exp = 0;
         nextLevelExp = 6;
@@ -247,7 +250,7 @@ public class Player extends Entity{
 
 
             int monsterIndex = gp.colChecker.checkEntity(this, gp.monster);
-            damageMonster(monsterIndex, attack);
+            damageMonster(monsterIndex, attack, direction);
 
             // AFTER CHECKING COLLISION, RESTORE ORIGINAL DATA
             worldX = currentWorldX;
@@ -392,19 +395,20 @@ public class Player extends Entity{
         }
     }
 
-    public void damageMonster(int i, int attack) {
+    public void damageMonster(int i, int attack, String direction) {
         if(i != 999) {
 
             if(!gp.monster[gp.currentMap][i].invincible) {
                 gp.playSE(7);
 
-                knockBack(gp.monster[gp.currentMap][i]);
+                knockBack(gp.monster[gp.currentMap][i], direction);
 
                 int damage = attack - gp.monster[gp.currentMap][i].defence;
 
                 if(damage < 0)
                     damage = 0;
 
+                lastMeleeHitDirection = direction;
                 gp.monster[gp.currentMap][i].life -= damage;
                 gp.monster[gp.currentMap][i].invincible = true;
                 gp.monster[gp.currentMap][i].damageReaction();
@@ -418,7 +422,7 @@ public class Player extends Entity{
         }
     }
 
-    public void knockBack(Entity entity) {
+    public void knockBack(Entity entity, String direction) {
 
         entity.direction = direction;
         entity.speed += 10;

@@ -14,6 +14,7 @@ public class Projectile extends Entity{
         this.alive = alive;
         this.user = user;
         this.life = maxLife;
+        this.type = type_projectile;
     }
     public void update(){
 
@@ -26,7 +27,9 @@ public class Projectile extends Entity{
         if(user == gp.player){
             int monsterIndex = gp.colChecker.checkEntity(this,gp.monster);
             if(monsterIndex != 999){
-                gp.player.damageMonster(monsterIndex, gp.monster[gp.currentMap][monsterIndex].defence + this.attack);
+                gp.projectileDamage = true;
+                gp.player.projectileHitDirection = this.direction;
+                gp.player.damageMonster(monsterIndex, gp.monster[gp.currentMap][monsterIndex].defence + this.attack, this.direction);
                 generateParticle(user.projectile, gp.monster[gp.currentMap][monsterIndex]);
                 alive = false;
                 collisionOn = false;
