@@ -87,7 +87,6 @@ public class GreenSlime extends Monster{
     public void damageReaction() {
 
         actionLockCounter = 0;
-        //direction = gp.player.lastMeleeHitDirection;
     }
 
     public void checkDrop() {

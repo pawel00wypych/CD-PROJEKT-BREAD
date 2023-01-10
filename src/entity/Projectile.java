@@ -29,7 +29,7 @@ public class Projectile extends Entity{
             if(monsterIndex != 999){
                 gp.projectileDamage = true;
                 gp.player.projectileHitDirection = this.direction;
-                gp.player.damageMonster(monsterIndex, gp.monster[gp.currentMap][monsterIndex].defence + this.attack, this.direction);
+                gp.player.damageMonster(monsterIndex, gp.monster[gp.currentMap][monsterIndex].defence + this.attack);
                 generateParticle(user.projectile, gp.monster[gp.currentMap][monsterIndex]);
                 alive = false;
                 collisionOn = false;

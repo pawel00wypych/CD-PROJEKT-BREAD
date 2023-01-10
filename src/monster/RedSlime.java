@@ -90,7 +90,6 @@ public class RedSlime extends Monster {
     public void damageReaction() {
 
         actionLockCounter = 0;
-        //direction = getOppositeDirection(gp.player.lastMeleeHitDirection);
     }
 
     public void checkDrop() {

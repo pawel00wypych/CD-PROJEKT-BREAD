@@ -113,7 +113,6 @@ public class Wolf extends Monster {
     public void damageReaction() {
 
         actionLockCounter = 0;
-        direction = getOppositeDirection(gp.player.direction);
     }
 
 

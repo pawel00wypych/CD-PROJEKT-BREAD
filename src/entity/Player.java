@@ -250,7 +250,7 @@ public class Player extends Entity{
 
 
             int monsterIndex = gp.colChecker.checkEntity(this, gp.monster);
-            damageMonster(monsterIndex, attack, direction);
+            damageMonster(monsterIndex, attack);
 
             // AFTER CHECKING COLLISION, RESTORE ORIGINAL DATA
             worldX = currentWorldX;
@@ -395,13 +395,13 @@ public class Player extends Entity{
         }
     }
 
-    public void damageMonster(int i, int attack, String direction) {
+    public void damageMonster(int i, int attack) {
         if(i != 999) {
 
             if(!gp.monster[gp.currentMap][i].invincible) {
                 gp.playSE(7);
 
-                knockBack(gp.monster[gp.currentMap][i], direction);
+                knockBack(gp.monster[gp.currentMap][i]);
 
                 int damage = attack - gp.monster[gp.currentMap][i].defence;
 
@@ -422,7 +422,7 @@ public class Player extends Entity{
         }
     }
 
-    public void knockBack(Entity entity, String direction) {
+    public void knockBack(Entity entity) {
 
         entity.direction = direction;
         entity.speed += 10;
