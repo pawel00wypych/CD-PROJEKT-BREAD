@@ -121,19 +121,30 @@ public abstract class Entity {
 
             collisionOn = false;
 
+            if(gp.projectileDamage) {
+
+                direction = gp.player.projectileHitDirection;
+            } else {
+
+                direction = gp.player.lastMeleeHitDirection;
+            }
+
             gp.colChecker.checkTile(this);
             gp.colChecker.checkObject(this,false);
             gp.colChecker.checkEntity(this,gp.monster);
 
+            if(gp.projectileDamage) {
+
+                direction = getOppositeDirection(gp.player.projectileHitDirection);
+            } else {
+
+                direction = getOppositeDirection(gp.player.lastMeleeHitDirection);
+            }
+
+
             if(collisionOn) {
-                if(gp.projectileDamage) {
 
-                    direction = getOppositeDirection(gp.player.projectileHitDirection);
-                    gp.projectileDamage = false;
-                } else {
-
-                    direction = getOppositeDirection(gp.player.lastMeleeHitDirection);
-                }
+                gp.projectileDamage = false;
                 knockBackCounter = 0;
                 knockBack = false;
                 speed = defaultSpeed;
@@ -170,15 +181,7 @@ public abstract class Entity {
             knockBackCounter++;
             if(knockBackCounter >= 10) {
 
-                if(gp.projectileDamage) {
-
-                    direction = getOppositeDirection(gp.player.projectileHitDirection);
-                    gp.projectileDamage = false;
-                } else {
-
-                    direction = getOppositeDirection(gp.player.lastMeleeHitDirection);
-                }
-
+                gp.projectileDamage = false;
                 knockBackCounter = 0;
                 knockBack = false;
                 speed = defaultSpeed;

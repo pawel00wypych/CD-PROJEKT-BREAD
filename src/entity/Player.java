@@ -53,7 +53,7 @@ public class Player extends Entity{
         maxMana = 18;
         mana = maxMana;
         level = 1;
-        strength = 0; //more strength -> more damage
+        strength = 1; //more strength -> more damage
         dexterity = 11; //more dexterity -> more defence
         exp = 0;
         nextLevelExp = 6;
@@ -181,6 +181,7 @@ public class Player extends Entity{
         if(gp.keyH.shotKeyPressed && !projectile.alive
                 && shotAvailableCounter == 30 && projectile.haveResource(this)){
             //SET DEFAULT COORDINATES DIRECTIONS AND USER
+            projectileHitDirection = direction;
             projectile.set(worldX, worldY, direction,true,this);
 
             // SUBTRACT THE COST (MANA, AMMO, ETC..)
