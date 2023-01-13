@@ -1,6 +1,5 @@
 package monster;
 
-import entity.Entity;
 import main.GamePanel;
 import object.OBJ_Coin_Bronze;
 import object.OBJ_Heart;

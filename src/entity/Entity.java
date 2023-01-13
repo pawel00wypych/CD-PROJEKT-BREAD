@@ -446,4 +446,8 @@ public abstract class Entity {
 
         return direction;
     }
+
+    public int getMana() {
+        return mana;
+    }
 }
