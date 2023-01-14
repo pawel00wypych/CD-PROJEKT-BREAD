@@ -109,7 +109,7 @@ public class SandSlime extends Monster {
     }
 
     @Override
-    public Monster clone() {
+    public SandSlime clone() {
         return new SandSlime(this.gp, this);
     }
 }

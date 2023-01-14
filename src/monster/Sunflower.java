@@ -110,7 +110,7 @@ public class Sunflower extends Monster {
     }
 
     @Override
-    public Monster clone() {
+    public Sunflower clone() {
         return new Sunflower(this.gp, this);
     }
 }

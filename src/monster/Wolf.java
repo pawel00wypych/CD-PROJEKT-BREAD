@@ -122,7 +122,7 @@ public class Wolf extends Monster {
     }
 
     @Override
-    public Monster clone() {
+    public Wolf clone() {
         return new Wolf(this.gp, this);
     }
 }
