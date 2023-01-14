@@ -90,7 +90,7 @@ public class GamePanel extends JPanel implements Runnable{
     public final State gameEndState;
 
 
-    private GamePanel() {
+    GamePanel() {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);

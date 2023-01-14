@@ -1,8 +1,5 @@
 package main;
 
-import state.PlayState;
-import state.TitleState;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
