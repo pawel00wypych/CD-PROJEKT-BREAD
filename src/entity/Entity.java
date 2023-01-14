@@ -450,4 +450,8 @@ public abstract class Entity {
     public int getMana() {
         return mana;
     }
+
+    public int getAmmo() {
+        return ammo;
+    }
 }

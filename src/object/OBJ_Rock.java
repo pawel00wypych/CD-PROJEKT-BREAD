@@ -42,7 +42,7 @@ public class OBJ_Rock extends Projectile {
 
         boolean haveResource = false;
 
-        if(user.ammo >= useCost)
+        if(user.getAmmo() >= useCost)
             haveResource = true;
 
         return haveResource;
