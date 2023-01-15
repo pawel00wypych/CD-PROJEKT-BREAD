@@ -112,7 +112,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     //SINGLETON INSTANCE GETTER
-    static GamePanel getInstance() {
+    public static GamePanel getInstance() {
         if (instance == null) {
             instance = new GamePanel();
         }
