@@ -1,5 +1,6 @@
-package monster;
+package test.monster;
 
+import monster.GreenSlime;
 import object.OBJ_Fireball;
 import object.OBJ_Rock;
 import org.junit.jupiter.api.Test;

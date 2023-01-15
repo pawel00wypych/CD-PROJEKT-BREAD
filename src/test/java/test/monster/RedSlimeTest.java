@@ -1,6 +1,7 @@
-package monster;
+package test.monster;
 
 import main.GamePanel;
+import monster.RedSlime;
 import object.OBJ_Fireball;
 import object.OBJ_Rock;
 import org.junit.jupiter.api.Test;
