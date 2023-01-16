@@ -1,8 +1,9 @@
-package object;
+package test.object;
 
 import entity.Entity;
 import entity.Player;
 import main.GamePanel;
+import object.OBJ_Coin_Bronze;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

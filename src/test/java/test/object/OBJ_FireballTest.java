@@ -1,7 +1,8 @@
-package object;
+package test.object;
 
 import entity.Entity;
 import main.GamePanel;
+import object.OBJ_Fireball;
 import org.junit.jupiter.api.Test;
 
 

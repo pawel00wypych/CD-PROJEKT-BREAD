@@ -1,7 +1,8 @@
-package object;
+package test.object;
 
 import entity.Entity;
 import main.GamePanel;
+import object.OBJ_Door;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
