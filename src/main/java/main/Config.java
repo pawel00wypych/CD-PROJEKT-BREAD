@@ -13,7 +13,7 @@ public class Config {
 
     public void saveConfig(ConfigMemento memento){
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("config.txt"));
+            BufferedWriter bw = new BufferedWriter(new FileWriter("/config/config.txt", true));
 
             //full screen
             if(memento.fullScreenOn)
@@ -36,13 +36,15 @@ public class Config {
         }
     }
 
+
     public ConfigMemento loadConfig(){
         try {
             boolean fullScreenOn;
             int musicVolume;
             int effectVolume;
-            BufferedReader br = new BufferedReader(new FileReader("config.txt"));
 
+            InputStream resourceStream =  this.getClass().getResourceAsStream("/config/config.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(resourceStream));
             String s = br.readLine();
 
             //full screen
@@ -59,7 +61,7 @@ public class Config {
             //SE volume
             s = br.readLine();
             effectVolume = Integer.parseInt(s);
-
+            resourceStream.close();
             br.close();
             return new ConfigMemento(fullScreenOn,musicVolume,effectVolume);
 
