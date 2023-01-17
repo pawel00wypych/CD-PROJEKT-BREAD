@@ -14,23 +14,23 @@ Sterujemy głównym bohaterem, który przemieszcza się po różnych poziomach. 
 
 #### 1. Singleton - instancja głównej klasy aplikacji
 
-#### 2. Fabryka abstrakcyjna - Tworzenie kolejnych poziomów
+#### 2. Fabryka abstrakcyjna - Tworzenie instancji potworów
 
-#### 3. Prototyp - Do tworzenia klonów podobnych obiektów na mapie
+#### 3. Prototyp - Do tworzenia klonów danych typów potworów
 
 ### **Wzorce Behawioralne:**
 
-#### 4. Stan - jako na przykład: statystyki postaci głównej typu hp/prędkość poruszania czy zebrane itemy
+#### 4. Stan - stan gry/ekran gry
 
-#### 5. Mediator - do komunikacji pomiędzy potworami a otoczeniem/graczem
+#### 5. Mediator - do komunikacji pomiędzy główną klasą aplikacji a zdarzeniami
 
-#### 6. Pamiątka - do zapisania stanu gry na początku każdego poziomu
+#### 6. Pamiątka - do zapisania/odczytywania konfiguracji gry do/z pliku
 
 ### **Wzorce Strukturalne:**
 
-#### 7. Fasada - do obsługi zestawu klas poprzez uproszczony interfejs 
+#### 7. Fasada - do obsługi zestawu klas poprzez główną klasę GamePanel
 
-#### 8. Dekorator - modyfikacja zachowań przeciwników w zależności od stanu
+#### 8. Dekorator - do rysowania życia/many/kluczy
 <br/>
 <br/>
 <br/>
