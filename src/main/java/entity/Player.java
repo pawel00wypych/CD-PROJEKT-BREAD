@@ -47,14 +47,14 @@ public class Player extends Entity{
         direction = "down";
 
         // PLAYER STATUS
-        maxLife = 14;
+        maxLife = 10;
         type = 0;
         life = maxLife;
-        maxMana = 18;
+        maxMana = 8;
         mana = maxMana;
         level = 1;
         strength = 1; //more strength -> more damage
-        dexterity = 11; //more dexterity -> more defence
+        dexterity = 5; //more dexterity -> more defence
         exp = 0;
         nextLevelExp = 6;
         coin = 0;
