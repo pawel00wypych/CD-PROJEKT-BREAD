@@ -13,13 +13,17 @@ public class Config {
 
     public void saveConfig(ConfigMemento memento){
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("/config/config.txt", true));
+            BufferedWriter bw = new BufferedWriter(new FileWriter("res/config/config.txt", false));
 
             //full screen
-            if(memento.fullScreenOn)
+            if(memento.fullScreenOn) {
+                System.out.println("One");
                 bw.write("On");
-            else
+            }
+            else {
+                System.out.println("Offe");
                 bw.write("Off");
+            }
             bw.newLine();
 
             //music volume
@@ -43,6 +47,7 @@ public class Config {
             int musicVolume;
             int effectVolume;
 
+            InputStream resourceStreamTest =  this.getClass().getResourceAsStream("../dupa.txt");
             InputStream resourceStream =  this.getClass().getResourceAsStream("/config/config.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(resourceStream));
             String s = br.readLine();

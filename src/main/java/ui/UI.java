@@ -270,6 +270,7 @@ public class UI {
             if(gp.keyH.enterPressed){
                 subState = 3;
                 commandNum = 0;
+                gp.config.saveConfig(new ConfigMemento(gp.fullScreenOn,gp.music.volumeScale,gp.soundEffect.volumeScale));
             }
         }
         //BACK
@@ -280,6 +281,7 @@ public class UI {
             if(gp.keyH.enterPressed){
                 gp.gameState = gp.playState;
                 commandNum = 0;
+                gp.config.saveConfig(new ConfigMemento(gp.fullScreenOn,gp.music.volumeScale,gp.soundEffect.volumeScale));
             }
         }
 
@@ -306,7 +308,7 @@ public class UI {
 
 
 
-        gp.config.saveConfig(new ConfigMemento(gp.fullScreenOn,gp.music.volumeScale,gp.soundEffect.volumeScale));
+
 
     }
     public void options_fullScreenNotification(int frameX, int frameY){
