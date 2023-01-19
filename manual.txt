@@ -1,0 +1,10 @@
+How to run project in IntelliJ:
+
+1) Clone repository https://github.com/pawel00wypych/CD-PROJEKT-BREAD.git
+2) Open project through IntelliJ Idea
+3) Set Java version to 17 (edit configuration -> build and run)
+4) Mark "res" folder as Resources (If it is not already) -> File -> Project Structure -> Modules -> Sources
+   similarly for "test" and "src" folders
+5) Reload Maven project
+6) Build
+7) Run project
