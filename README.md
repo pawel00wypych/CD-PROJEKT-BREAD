@@ -1,8 +1,20 @@
+
 # CD-PROJEKT-BREAD
 Projekt końcowy z Technologii Obiektowych
 <br/>
+<br/>
+
+## Requirements:
+<br/>
+
+### - Java 17
+
+### - Maven latest version
+
+<br/>
 
 ## Co projekt będzie robił?
+
 Gra komputerowa 2D napisana w Javie stanowiąca połączenie gatunków roguelike i strzelanki tworzona przez Paweł Wypych, Karol Wojtasz, Piotr Zbiński.
 Sterujemy głównym bohaterem, który przemieszcza się po różnych poziomach. Postać jest zawsze w centrum ekranu a kamera podąża za nią. Na każdym poziomie są dostępne interaktywne przedmioty oraz przeciwnicy. Jest możliwy rozwój postaci. Gra zawiera ścieżkę dźwiękową.
 
