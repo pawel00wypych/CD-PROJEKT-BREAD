@@ -8,3 +8,10 @@ How to run project in IntelliJ:
 5) Reload Maven project
 6) Build
 7) Run project
+
+How to run project from cmd:
+1) You need to have maven installed(check in cmd: mvn -version) and check if java version in maven is set to 17
+2) You also need java 17 installed and set in path environmental variables
+3) Clone repository https://github.com/pawel00wypych/CD-PROJEKT-BREAD.git
+4) Open project directory in cmd
+5) type: exec.sh
