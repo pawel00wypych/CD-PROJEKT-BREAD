@@ -95,3 +95,7 @@ We control the main character who moves through different levels. The character 
 - Paweł Wypych
 - Karol Wojtasz
 - Piotr Zbiński
+
+![game_screen3](https://user-images.githubusercontent.com/92308173/214968849-c4b82d06-c432-4c68-bf06-230811e78b34.png)
+![game_screen2](https://user-images.githubusercontent.com/92308173/214968850-a8d75d42-fe85-4274-aa1b-7953db3bc306.png)
+![game_screen1](https://user-images.githubusercontent.com/92308173/214968856-e25d3f4e-0477-4999-bea0-0c890b7f5dec.png)
